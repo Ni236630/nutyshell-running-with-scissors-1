@@ -47,8 +47,8 @@ eventHub.addEventListener("click", e => {
 const render = () => {
     contentTarget.innerHTML += `
         <section class="register">
-            <input id="register--username" type="text" placeholder="Enter your username">
-            <input id="register--email" type="text" placeholder="Enter your email address">
+            <input id="register--username" type="text" placeholder="Enter your username" autocomplete="off">
+            <input id="register--email" type="text" placeholder="Enter your email address" autocomplete="off">
 
             <button id="register--button">Register</button>
         </section>
