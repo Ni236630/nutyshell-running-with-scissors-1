@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 1em;
+}
+
+.dashboard {
+  height: 100vh;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 1em;
+}
