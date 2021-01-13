@@ -75,7 +75,6 @@ const render = () => {
           <!-- TaskList() -->    
         </section>
         <section class="article-list">
-          <h1>ARTICLE LIST</h1>
           ${ArticleList()}   
         </section>
       </article>

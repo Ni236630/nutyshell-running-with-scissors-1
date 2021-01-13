@@ -1,8 +1,8 @@
 // Ryan DeVault - Purpose: list the articles saved by the current user and also by the current user's friends 
 
 // Imports
-import { getArticles, useArticles} from "./articleDataProvider.js";
-import { getFriends, useFriends } from "../friends/friendDataProvider.js";
+import { useArticles} from "./articleDataProvider.js";
+import { useFriends } from "../friends/friendDataProvider.js";
 import { ArticleConverter } from "./Article.js";
 
 
@@ -26,9 +26,9 @@ export const ArticleList = () => {
 
     // Attach isFriends property on each article and set to false
     let userArticlesFinal = userArticlesRaw.map(article => {
-        article.isFriend = false
-        return article
-    })
+        article.isFriend = false;
+        return article;
+    });
 
     // ---------------------- FRIENDS' ARTICLES ----------------------
     // Stores the relationship objects from the friends Table that have the current user's Id as the userId
@@ -42,14 +42,22 @@ export const ArticleList = () => {
 
     // Attach isFriends property on each article and set to true
     let friendsArticlesFinal = friendArticlesRaw.map(article => {
-        article.isFriend = true
-        return article
-    })
+        article.isFriend = true;
+        return article;
+    });
 
     // -------------------- ALL RELEVANT ARTICLES --------------------
     // Combine the user's articles with the articles that their friend(s) saved.
-    let relevantArticles = [...userArticlesFinal, ...friendsArticlesFinal]
+    let relevantArticles = [...userArticlesFinal, ...friendsArticlesFinal];
 
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
-    return relevantArticles.map(article => ArticleConverter(article)).join("");
+    console.log(relevantArticles)
+    return `
+    <div class="article-list__top-row">
+        <button class="newArtical--${currentUser}">New Article</button>
+    </div>
+    <div class="article-list__articles">
+        ${relevantArticles.map(article => ArticleConverter(article)).join("")}
+    </div>
+    `;
 };
