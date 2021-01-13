@@ -7,9 +7,10 @@ export const EventList = () => {
   const events = useEvents();
   const friends = useFriends();
 
+  // array of user's events
+  const userEvents = events.filter((e) => activeUserId === e.userId);
+  
   if (events.length > 0) {
-    // array of user's events
-    const userEvents = events.filter((e) => activeUserId === e.userId);
     // add a class designation to each user event object
     userEvents.forEach((e) => {
       e.class = 'userEvent';
