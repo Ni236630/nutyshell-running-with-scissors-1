@@ -3,6 +3,14 @@
   padding: 1em;
 }
 
+.event-list__top-row {
+  margin-bottom: 0.25em;
+}
+
+.event-card{
+  margin-bottom: 0.5em;
+}
+
 .userEvent {
   background-color: lime;
 }
