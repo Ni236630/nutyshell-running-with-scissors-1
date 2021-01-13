@@ -6,7 +6,7 @@ let articles = [];
 // Selectors
 const eventHub = document.querySelector('.container');
 
-// Event Dispatcher
+// Event Dispatcher (Called when saveFriend or deleteFriend is called)
 const dispatchStateChangeEvent = () => {
     const articlesStateChangedEvent = new CustomEvent('articlesStateChanged');
     eventHub.dispatchEvent(articlesStateChangedEvent);
@@ -22,7 +22,7 @@ export const getArticles = () => {
 // Returns a copy of the array in the articles variable
 export const useArticles = () => articles.slice();
 
-// Saves new articles to the API
+// Saves a new article to the API
 export const saveArticle = article => {
     return fetch('http://localhost:8088/articles', {
         method: "POST",
@@ -35,7 +35,7 @@ export const saveArticle = article => {
     .then(dispatchStateChangeEvent);
 };
 
-// Deletes articles from the API
+// Deletes an article from the API
 export const deleteArticle = articleId => {
     return fetch(`http://localhost:8088/articles/${articleId}`,{
         method: "DELETE"
