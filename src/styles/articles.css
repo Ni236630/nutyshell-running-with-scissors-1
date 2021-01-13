@@ -2,6 +2,7 @@
     border: 2px solid red;
     padding: 1em;
     overflow-y: scroll;
+    height: 250px;
 }
 
 .article-list__top-row {
