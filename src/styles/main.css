@@ -1,5 +1,6 @@
 @import url('./events.css');
 @import url('./articles.css');
+@import url('./messages.css');
 
 * {
   margin: 0;

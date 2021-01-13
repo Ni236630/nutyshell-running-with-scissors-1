@@ -27,6 +27,6 @@ export const messageList = () => {
     console.log(usersNamesToDisplay)
     return `
     ${usersNamesToDisplay.map(theUserName => `${theUserName.username}: `).join("")} ${messagesToDisplay.map(theUserMessage => `<p>${theUserMessage.message}</p>`).join("")}
-    
+    <br><br><label for="fname">Enter a message:</label> <input type="text" id="fname" name="fname"> <button>Submit</button>
     `
 }
