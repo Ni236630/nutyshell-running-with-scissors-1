@@ -63,6 +63,7 @@ export const deleteTask = (taskId) => {
     method: "DELETE"
   })
   .then(getTasks)
+  .then(dispatchStateChangeEvent)
 };
 
 
