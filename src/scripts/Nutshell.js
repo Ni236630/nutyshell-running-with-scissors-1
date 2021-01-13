@@ -7,6 +7,7 @@ import { getMessages } from './messages/messagesDataProvider.js';
 import { getFriends } from './friends/friendDataProvider.js';
 import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
+import { ArticleList } from './articles/ArticleList.js';
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
@@ -75,7 +76,7 @@ const render = () => {
         </section>
         <section class="article-list">
           <h1>ARTICLE LIST</h1>
-          <!-- ArticleList() -->    
+          ${ArticleList()}   
         </section>
       </article>
     </main>

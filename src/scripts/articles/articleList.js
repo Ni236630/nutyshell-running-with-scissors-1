@@ -26,8 +26,14 @@ export const articleList = () => {
 
         // ------------------- CURRENT USER ARTICLE(S) -------------------
         // Saves articles that belong to the current user
-        let userArticles = allArticles.filter(article => 
+        let userArticlesRaw = allArticles.filter(article => 
             article.userId === currentUser);
+
+        // Attach isFriends property on each article and set to false
+        let userArticlesFinal = userArticlesRaw.map(article => {
+            article.isFriends = false
+            return article
+        })
 
         // ---------------------- FRIENDS' ARTICLES ----------------------
         // Stores the relationship objects from the friends Table that have the current user's Id as the userId
@@ -35,8 +41,19 @@ export const articleList = () => {
             relationship.userId === currentUser);
 
         // Saves articles that belong to the current user's friends
-        let friendArticles = allArticles.filter(article => 
+        let friendArticlesRaw = allArticles.filter(article => 
             userFriends.find(relationship => 
                 relationship.friendId === article.userId));
+
+        // Attach isFriends property on each article and set to true
+        let friendsArticlesFinal = friendArticlesRaw.map(article => {
+            article.isFriends = true
+            return article
+        })
+    
+        // -------------------- ALL RELEVANT ARTICLES --------------------
+        console.log("friends articles", friendsArticlesFinal)
+        // ----------------------- HTML CONVERSION -----------------------
+         
     })
 }
