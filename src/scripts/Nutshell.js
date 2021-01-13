@@ -9,6 +9,7 @@ import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
 import { weatherList, getLocation } from './weather/weatherList.js';
 import { EventList } from './events/EventList.js';
+import { taskList } from "./tasks/taskList.js";
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
@@ -45,7 +46,7 @@ const CurrentUser = () => {
   const name = users.find((u) => u.id === activeUserId);
   return name.username;
 };
-debugger
+
 const render = () => {
   // Render all your UI components here
   contentTarget.innerHTML = `
