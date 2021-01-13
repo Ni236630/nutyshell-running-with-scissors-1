@@ -34,7 +34,7 @@ export const taskList = () => {
       tasks = useTasks()
       //looping over tasksObjects to create HTML
         return` 
-        <div>
+        <div class="task__container">
         <button id="addTask">Add New Task</button>
          <ul>${tasks.map((task)=>{
           if(task.userId === activeUserId){

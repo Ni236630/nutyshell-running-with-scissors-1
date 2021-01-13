@@ -1,0 +1,8 @@
+.task-list{
+  border: 2px solid red;
+  padding: 1em;
+}
+
+.task__container{
+ margin-left: 10px;
+}
