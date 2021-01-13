@@ -4,4 +4,7 @@ dist/
 .DS_Store
 database.json
 .vscode
+
 api/
+
+debug.log
