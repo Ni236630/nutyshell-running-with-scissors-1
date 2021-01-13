@@ -5,8 +5,9 @@
 import { useArticles} from "./articleDataProvider.js";
 import { useFriends } from "../friends/friendDataProvider.js";
 import { ArticleConverter } from "./Article.js";
-import "./EditArticleForm.js";
 import "./NewArticleForm.js";
+import "./EditArticleForm.js";
+import "./DeleteArticleForm.js";
 
 
 // Local Variables
@@ -38,8 +39,15 @@ eventHub.addEventListener('click', event => {
             }
         });
         eventHub.dispatchEvent(editArticle);
-    }
-})
+    } else if(button === "deleteArticle"){
+        const deleteArticle = new CustomEvent("deleteArticle", {
+            detail: {
+                articleId: identity
+            }
+        });
+        eventHub.dispatchEvent(deleteArticle);
+    };
+});
 
 // Main Function
 export const ArticleList = () => {
