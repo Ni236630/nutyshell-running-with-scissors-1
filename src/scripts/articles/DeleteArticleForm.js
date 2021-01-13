@@ -7,6 +7,4 @@ import { deleteArticle } from "./articleDataProvider.js";
 // Selectors
 const eventHub = document.querySelector(".container");
 
-eventHub.addEventListener("deleteArticle", event => {
-    console.log("I heard someone wants to delete article #:", event.detail.articleId)
-})
+eventHub.addEventListener("deleteArticle", event => deleteArticle(event.detail.articleId));

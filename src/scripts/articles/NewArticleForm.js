@@ -6,4 +6,4 @@ const eventHub = document.querySelector(".container");
 
 eventHub.addEventListener("addArticle", event => {
     console.log("I heard someone wants to add a new article for user #:", event.detail.userId)
-})
+});
