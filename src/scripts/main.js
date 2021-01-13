@@ -1,3 +1,4 @@
+import { articleList } from './articles/articleList.js';
 import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
 import { Nutshell } from './Nutshell.js';
@@ -19,3 +20,5 @@ if (!sessionStorage.getItem('activeUser')) {
 } else {
   Nutshell();
 }
+
+articleList();
