@@ -8,3 +8,4 @@ database.json
 api/
 
 debug.log
+.Settings.js
