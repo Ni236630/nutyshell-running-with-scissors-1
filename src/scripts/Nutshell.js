@@ -7,7 +7,8 @@ import { getMessages } from './messages/messagesDataProvider.js';
 import { getFriends } from './friends/friendDataProvider.js';
 import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
-import { taskList } from './tasks/taskList.js';
+import { weatherList, getLocation } from './weather/weatherList.js';
+import { EventList } from './events/EventList.js';
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
@@ -21,7 +22,6 @@ const promises = [
   getMessages(),
   getFriends(),
   getUserMessages(),
-  // getWeather(withZipCode)
 ];
 
 // logout button event handler
@@ -35,6 +35,7 @@ eventHub.addEventListener('click', (e) => {
 });
 
 export const Nutshell = () => {
+  getLocation()
   Promise.all(promises).then(render);
 };
 
@@ -51,8 +52,7 @@ const render = () => {
     <article class="top-row">
       <div class="top-row__current-user">Current User: <b>${CurrentUser()}</b></div>
       <div class="top-row__current-weather">
-        <h1>CURRENT WEATHER</h1>
-        <!-- WeatherList() -->
+        <h1>CURRENT WEATHER</h1>  
       </div>
       <div class="top-row__logout-button"><button id="logout">Log Out</button></div>
     </article>
@@ -63,8 +63,7 @@ const render = () => {
       </aside>
       <article>
         <section class="event-list">
-          <h1>EVENT LIST</h1>
-          <!-- MessageList() -->   
+          ${EventList()}
         </section>
         <section class="message-list">
           <h1>MESSAGE LIST</h1>
