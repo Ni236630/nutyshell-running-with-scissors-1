@@ -1,10 +1,9 @@
-const contentTarget = document.getElementById('newEventFormDialog')
-
 export const NewEventForm = () => {
+  const contentTarget = document.getElementById('newEventFormDialog');
   contentTarget.innerHTML = '';
   contentTarget.innerHTML = render();
-
-}
+  contentTarget.showModal();
+};
 
 const render = () => {
   return `
@@ -19,5 +18,5 @@ const render = () => {
       <button id="saveNewEvent">Save New Event</button>
     </div>
   </div>
-  `
-}
+  `;
+};

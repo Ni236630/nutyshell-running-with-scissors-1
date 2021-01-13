@@ -18,3 +18,22 @@
 .friendEvent {
   background-color: coral;
 }
+
+#newEventFormDialog {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #aaaaaaaa;
+}
+
+.new-event-form {
+  background-color: #ffffff;
+  position: relative;
+  top: 25%;
+}
+
+.new-event-form__form {
+  display: flex;
+  flex-direction: column;
+  padding: 4em;
+}

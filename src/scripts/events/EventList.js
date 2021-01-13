@@ -70,6 +70,7 @@ export const EventList = () => {
     <div class="event-list__events">
     <h2>No events found.</h2>
     </div>
+    <dialog id="newEventFormDialog"></dialog>
     `;
   }
 };
@@ -82,3 +83,8 @@ const render = (events) => {
 };
 
 eventHub.addEventListener('eventStateChanged', EventList);
+eventHub.addEventListener('click', (e) => {
+  if (e.target.id === 'newEvent') {
+    NewEventForm();
+  }
+});
