@@ -5,7 +5,7 @@ export const ArticleConverter = (articleObject) => {
         owner = "friendArticle"
     } else {
         owner = "userArticle"
-    }
+    };
     return `
         <div class="article-card, ${owner}" id="article-card--${articleObject.id}">
             <div class="article__title">${articleObject.title}</div>
@@ -13,5 +13,5 @@ export const ArticleConverter = (articleObject) => {
             <div class="article__synopsis">${articleObject.synopsis}</div>
             <button class="editArticle--${articleObject.id}">Edit Article</button>
         </div>
-    `
-}
+    `;
+};

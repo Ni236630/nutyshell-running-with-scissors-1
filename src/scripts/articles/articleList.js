@@ -24,7 +24,7 @@ export const ArticleList = () => {
     let userArticlesRaw = allArticles.filter(article => 
         article.userId === currentUser);
 
-    // Attach isFriends property on each article and set to false
+    // Attach isFriend property on each article and set to false
     let userArticlesFinal = userArticlesRaw.map(article => {
         article.isFriend = false;
         return article;
@@ -40,7 +40,7 @@ export const ArticleList = () => {
         userFriends.find(relationship => 
             relationship.friendId === article.userId));
 
-    // Attach isFriends property on each article and set to true
+    // Attach isFriend property on each article and set to true
     let friendsArticlesFinal = friendArticlesRaw.map(article => {
         article.isFriend = true;
         return article;
@@ -51,7 +51,6 @@ export const ArticleList = () => {
     let relevantArticles = [...userArticlesFinal, ...friendsArticlesFinal];
 
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
-    console.log(relevantArticles)
     return `
     <div class="article-list__top-row">
         <button class="newArtical--${currentUser}">New Article</button>
