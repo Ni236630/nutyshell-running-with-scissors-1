@@ -7,41 +7,70 @@ export const EventList = () => {
   const events = useEvents();
   const friends = useFriends();
 
-  const userFriends = friends.filter((f) => activeUserId === f.userId);
+  if (events.length > 0) {
+    // array of user's events
+    const userEvents = events.filter((e) => activeUserId === e.userId);
+    // add a class designation to each user event object
+    userEvents.forEach((e) => {
+      e.class = 'userEvent';
+    });
 
-  const friendIds = userFriends.map((f) => f.friendId);
+    const userFriends = friends.filter((f) => activeUserId === f.userId);
 
-  // array of user's events
-  const userEvents = events.filter((e) => activeUserId === e.userId);
-  // add a class designation to each user event object
-  userEvents.forEach((e) => {
-    e.class = 'userEvent';
-  });
+    const friendIds = userFriends.map((f) => f.friendId);
 
-  // array of events for all friends
-  const friendEvents = friendIds.map((i) => {
-    return events.find((e) => i === e.userId);
-  });
+    // array of events for all friends
+    let fEvents = [];
+    friendIds.forEach((i) => {
+      let event = events.find((e) => i === e.userId);
+      if (!event) {
+        return;
+      } else {
+        fEvents.push(event);
+      }
+    });
 
-  // add a class designation to each friend event object
-  friendEvents.forEach((e) => {
-    e.class = 'friendEvent';
-  });
+    if (fEvents.length > 0) {
+      // add a class designation to each friend event object
+      fEvents.forEach((e) => {
+        e.class = 'friendEvent';
+      });
 
-  const allEvents = userEvents.concat(friendEvents);
+      const allEvents = userEvents.concat(fEvents);
 
-  // execute HTML converter on all events
-  const eventCardCollection = allEvents
-    .sort((a, b) => a.date.localeCompare(b.date))
-    .map((e) => Event(e))
-    .join('');
-
-  return `
+      return `
+        <div class="event-list__top-row">
+          <button id="newEvent">New Event</button>      
+        </div>
+        <div class="event-list__events">
+          ${render(allEvents)}
+        </div>
+        `;
+    } else {
+      return `
+      <div class="event-list__top-row">
+          <button id="newEvent">New Event</button>      
+        </div>
+        <div class="event-list__events">
+          ${render(userEvents)}
+        </div>
+        `;
+    }
+  } else {
+    return `
     <div class="event-list__top-row">
       <button id="newEvent">New Event</button>      
     </div>
     <div class="event-list__events">
-      ${eventCardCollection}
+      <h2>No events found.</h2>
     </div>
     `;
+  }
+};
+
+const render = (events) => {
+  return events
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .map((e) => Event(e))
+    .join('');
 };
