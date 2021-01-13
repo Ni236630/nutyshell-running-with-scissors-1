@@ -4,13 +4,12 @@
 let articles = [];
 
 // Selectors
-const eventHub = document.querySelector('container');
+const eventHub = document.querySelector('.container');
 
 // Event Dispatcher
 const dispatchStateChangeEvent = () => {
-    const articleStateChangedEvent = new CustomEvent("articleStateChanged");
-
-    eventHub.dispatchEvent();
+    const articlesStateChangedEvent = new CustomEvent('articlesStateChanged');
+    eventHub.dispatchEvent(articlesStateChangedEvent);
 };
 
 // GETs articles from database.json and stores them in the local articles variable
