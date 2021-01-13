@@ -64,8 +64,7 @@ const render = () => {
       </aside>
       <article>
         <section class="event-list">
-          <h1>EVENT LIST</h1>
-          <!-- MessageList() -->   
+          ${EventList()}
         </section>
         <section class="message-list">
           <h1>MESSAGE LIST</h1>

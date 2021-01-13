@@ -16,7 +16,7 @@ export const useEvents = () => events.slice()
 // Grab the events from our database
 export const getEvents = () => {
     return fetch('http://localhost:8088/events')
-        .then(response => response.json)
+        .then(response => response.json())
         .then(parsedEvents => {
             events = parsedEvents
         })
