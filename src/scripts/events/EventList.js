@@ -31,7 +31,10 @@ export const EventList = () => {
   const allEvents = userEvents.concat(friendEvents);
 
   // execute HTML converter on all events
-  const eventCardCollection = allEvents.map((e) => Event(e)).join('');
+  const eventCardCollection = allEvents
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .map((e) => Event(e))
+    .join('');
 
   return `
     <div class="event-list__top-row">
@@ -40,5 +43,5 @@ export const EventList = () => {
     <div class="event-list__events">
       ${eventCardCollection}
     </div>
-    `
+    `;
 };
