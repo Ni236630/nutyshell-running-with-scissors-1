@@ -1,0 +1,12 @@
+.event-list {
+  border: 2px solid red;
+  padding: 1em;
+}
+
+.userEvent {
+  background-color: lime;
+}
+
+.friendEvent {
+  background-color: coral;
+}
