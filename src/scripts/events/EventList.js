@@ -1,11 +1,11 @@
 import { Event } from './Event.js';
 import { useEvents } from './eventProvider.js';
 import { useFriends } from '../friends/friendDataProvider.js';
+import { NewEventForm } from './NewEventForm.js';
 
 const eventHub = document.querySelector('.container');
 
 export const EventList = () => {
-  console.log('BANG')
   const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
   const events = useEvents();
   const friends = useFriends();
@@ -49,6 +49,7 @@ export const EventList = () => {
       <div class="event-list__events">
       ${render(allEvents)}
       </div>
+      <dialog id="newEventFormDialog"></dialog>
       `;
     } else {
       return `
@@ -58,6 +59,7 @@ export const EventList = () => {
       <div class="event-list__events">
       ${render(userEvents)}
       </div>
+      <dialog id="newEventFormDialog"></dialog>
       `;
     }
   } else {

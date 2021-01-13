@@ -6,7 +6,6 @@ let events = [] // Initialize the events array
 // Dispatch event to update the DOM when changes are mode
 const dispatchStateChangeEvent = () => {
     const eventStateChangedEvent = new CustomEvent("eventStateChanged")
-
     eventHub.dispatchEvent(eventStateChangedEvent)
 }
 
