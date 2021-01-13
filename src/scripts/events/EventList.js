@@ -11,18 +11,26 @@ export const EventList = () => {
 
   const friendIds = userFriends.map((f) => f.friendId);
 
+  // array of user's events
   const userEvents = events.filter((e) => activeUserId === e.userId);
+  // add a class designation to each user event object
   userEvents.forEach((e) => {
     e.class = 'userEvent';
   });
+
+  // array of events for all friends
   const friendEvents = friendIds.map((i) => {
     return events.find((e) => i === e.userId);
   });
+
+  // add a class designation to each friend event object
   friendEvents.forEach((e) => {
     e.class = 'friendEvent';
   });
 
   const allEvents = userEvents.concat(friendEvents);
+
+  // execute HTML converter on all events
   const eventCardCollection = allEvents.map((e) => Event(e)).join('');
 
   return `
