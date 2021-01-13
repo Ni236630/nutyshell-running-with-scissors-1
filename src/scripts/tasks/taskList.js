@@ -33,10 +33,15 @@ export const taskList = () => {
       const activeUserId = parseInt(sessionStorage.getItem('activeUser'))
       tasks = useTasks()
       //looping over tasksObjects to create HTML
-        return tasks.map((task)=>{
+        return` 
+        <div>
+        <button id="addTask">Add New Task</button>
+         <ul>${tasks.map((task)=>{
           if(task.userId === activeUserId){
             
              return  taskHTMLConverter(task)
           }
-      }).join("")
+      }).join("")}
+        </ul>
+      </div>`
 }
