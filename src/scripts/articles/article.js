@@ -11,7 +11,7 @@ export const ArticleConverter = (articleObject) => {
             <div class="article__title">${articleObject.title}</div>
             <div class="article__url">${articleObject.url}</div>
             <div class="article__synopsis">${articleObject.synopsis}</div>
-            <button class="editArticle--${articleObject.id}">Edit Article</button>
+            <button id="editArticle--${articleObject.id}">Edit Article</button>
         </div>
     `;
 };

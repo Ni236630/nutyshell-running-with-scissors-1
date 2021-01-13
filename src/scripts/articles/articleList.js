@@ -1,16 +1,47 @@
-// Ryan DeVault - Purpose: list the articles saved by the current user and also by the current user's friends 
+// Ryan DeVault - Purpose: list the articles saved by the current user and also by the current user's friends.
+// Also, listen for the add, edit or delete buttons for the articles to be pressed
 
 // Imports
 import { useArticles} from "./articleDataProvider.js";
 import { useFriends } from "../friends/friendDataProvider.js";
 import { ArticleConverter } from "./Article.js";
+import "./EditArticleForm.js";
+import "./NewArticleForm.js";
 
 
-// local variables
+// Local Variables
 let allArticles = [];
 let allRelationships = [];
 let currentUser = "";
 
+// Selectors
+const eventHub = document.querySelector(".container");
+
+// Event Listeners
+eventHub.addEventListener('click', event => {
+    const button = event.target.id.split("--")[0];
+    const identity = event.target.id.split("--")[1];
+    // If the user clicked on the "New Article" button, send out a custom event for that
+    if(button === "newArticle"){
+        const addArticle = new CustomEvent("addArticle", {
+            detail: {
+                userId: identity
+            }
+        });
+        eventHub.dispatchEvent(addArticle);
+
+        // If the user clicked on the "Edit Article" button, send out a custom event for that
+    } else if(button === "editArticle"){
+        const editArticle = new CustomEvent("editArticle", {
+            detail: {
+                articleId: identity
+            }
+        });
+        eventHub.dispatchEvent(editArticle);
+    }
+})
+
+// Main Function
 export const ArticleList = () => {
     // Stores all of the articles and relationships(friends) from the database.json file
     allArticles = useArticles();
@@ -53,7 +84,7 @@ export const ArticleList = () => {
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
     return `
     <div class="article-list__top-row">
-        <button class="newArtical--${currentUser}">New Article</button>
+        <button id="newArticle--${currentUser}">New Article</button>
     </div>
     <div class="article-list__articles">
         ${relevantArticles.map(article => ArticleConverter(article)).join("")}
