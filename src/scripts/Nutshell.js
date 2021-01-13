@@ -9,6 +9,7 @@ import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
 import { weatherList, getLocation } from './weather/weatherList.js';
 import { EventList } from './events/EventList.js';
+import { ArticleList } from './articles/ArticleList.js';
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
@@ -74,8 +75,7 @@ const render = () => {
           <!-- TaskList() -->    
         </section>
         <section class="article-list">
-          <h1>ARTICLE LIST</h1>
-          <!-- ArticleList() -->    
+          ${ArticleList()}   
         </section>
       </article>
     </main>
