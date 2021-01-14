@@ -1,3 +1,5 @@
+/* Ryan DeVault - Purpose: application of styles related to article components */
+
 .article-list {   
     border: 2px solid red;
     padding: 1em;
@@ -37,3 +39,65 @@
 .newArticleBtn {
     margin-bottom: 10px;
 }
+
+
+/* -------------------------- */
+/* Article Dialog Boxes Below */
+/* -------------------------- */
+
+
+#newArticleFormDialog {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #aaaaaaaa;
+  }
+  
+  .new-article-form {
+    background-color: #ffffff;
+    position: relative;
+    top: 25%;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  
+  .new-article-form__title {
+    padding-top: 1em;
+    /* border: 2px solid red; */
+  }
+  
+  .new-article-form__top-row {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .new-article-form__top-row h1 {
+    font-size: 36px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .new-article-form__form {
+    /* border: 2px solid red; */
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .new-article-form__form-group {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 50%; */
+    margin-bottom: 0.25em;
+  }
+  
+  #saveNewArticle {
+    width: 130px;
+    margin: 0.25em auto 0;
+  }
+  
+  #new-article-form__close {
+    align-self: flex-end;
+  }

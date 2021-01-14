@@ -1,5 +1,6 @@
 // Ryan DeVault - Purpose: Converts provided article object 
 // into an HTML representation and returns it.
+
 export const ArticleConverter = (articleObject) => {
     // Initialize Variables
     let owner = "";
