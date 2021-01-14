@@ -4,6 +4,7 @@
 // Imports
 import { useArticles} from "./articleDataProvider.js";
 import { useFriends } from "../friends/friendDataProvider.js";
+import { useUsers } from "../users/userDataProvider.js";
 import { ArticleConverter } from "./Article.js";
 import "./NewArticleForm.js";
 import "./EditArticleForm.js";
@@ -14,6 +15,7 @@ import "./DeleteArticleForm.js";
 let allArticles = [];
 let allRelationships = [];
 let currentUser = "";
+let allUsers = [];
 
 // Selectors
 const eventHub = document.querySelector(".container");
@@ -75,13 +77,15 @@ export const ArticleList = () => {
         relationship.userId === currentUser);
 
     // Saves articles that belong to the current user's friends
-    let friendArticlesRaw = allArticles.filter(article => 
+    let friendsArticlesRaw = allArticles.filter(article => 
         userFriends.find(relationship => 
             relationship.friendId === article.userId));
 
-    // Attach isFriend property on each article and set to true
-    let friendsArticlesFinal = friendArticlesRaw.map(article => {
+    // Attach isFriend property on each article and set to true, then add the user's name
+    allUsers = useUsers();
+    let friendsArticlesFinal = friendsArticlesRaw.map(article => {
         article.isFriend = true;
+        article.friendObject = allUsers.find(user => user.id === article.userId);
         return article;
     });
 
@@ -94,6 +98,8 @@ export const ArticleList = () => {
     <div class="article-list__top-row">
         <button id="newArticle--${currentUser}">New Article</button>
     </div>
+    <dialog id="newArticleFormDialog"></dialog>
+    <dialog id="editArticleFormDialog"></dialog>
     <div class="article-list__articles">
         ${relevantArticles.map(article => ArticleConverter(article)).join("")}
     </div>
