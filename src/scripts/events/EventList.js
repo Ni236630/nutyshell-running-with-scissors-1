@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: displays a list of event cards in the DOM
+
 import { Event } from './Event.js';
 import { useEvents } from './eventProvider.js';
 import { useFriends } from '../friends/friendDataProvider.js';
