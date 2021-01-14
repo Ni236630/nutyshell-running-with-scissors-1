@@ -27,7 +27,6 @@ eventHub.addEventListener("click", customEvent => {
     })
   return eventHub.dispatchEvent(customEvent)}
   else if(customEvent.target.id ==="deleteTask"){
-      const activeUserId = parseInt(sessionStorage.getItem('activeUser'))
      const taskId = customEvent.target.value
     const deleteEvent = new CustomEvent("deleteTaskClicked",{
       detail: {
