@@ -71,7 +71,6 @@ const render = () => {
           ${EventList()}
         </section>
         <section class="message-list">
-          <h1>MESSAGE LIST</h1>
           ${messageList()}
         </section>
         <section class="task-list">
@@ -94,3 +93,19 @@ eventHub.addEventListener('eventsStateChanged', () => {
 eventHub.addEventListener("articlesStateChanged", event => 
   document.querySelector('.article-list').innerHTML = ArticleList()
 );
+
+// Listen for a state change in messages
+eventHub.addEventListener("messagesStateChanged", () => {
+  // Update my app state data to properly update the DOM
+  getUsers()
+    .then(getMessages)
+    .then(getUserMessages)
+    .then(() => {
+      // Rend to the DOM
+      document.querySelector('.message-list').innerHTML = messageList()
+      // Define the chat area
+      let chatBox = document.getElementById("chatMessages")
+      // Keep the chat area scrolled to the bottom to show most recent messages only
+      chatBox.scrollTop = chatBox.scrollHeight
+    })
+});
