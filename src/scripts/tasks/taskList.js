@@ -1,33 +1,28 @@
-/* 
-
-Imports for function use
-
-*/
+/*  Imports for function use    */
 import {useTasks} from "./taskDataProvider.js";
 import { taskHTMLConverter } from "./TaskHTML.js";
-/* 
+import { taskDialog } from "./NewTaskForm.js";
 
-variables for events and injection
+/*  variables for events and injection    */
 
-*/
 let tasks =[]
 
 const eventHub = document.querySelector(".dashboard")
 
-/* 
+/*  events to render    */
 
-events to render
-
-*/
 eventHub.addEventListener("tasksStateChanged",() => {
   taskList();
 })
 
-/* 
+/*  events dispatch click   */
+eventHub.addEventListener("click", customEvent => {
+  if(customEvent.target.id === "addTask"){
+    const addclick = 4;
+  eventHub.dispatchEvent(addclick)}
+})
+/*  initial list of tasks   */
 
-initial list of tasks
-
-*/
 export const taskList = () => {
   
       const activeUserId = parseInt(sessionStorage.getItem('activeUser'))
@@ -43,5 +38,6 @@ export const taskList = () => {
           }
       }).join("")}
         </ul>
+        ${taskDialog()}
       </div>`
 }
