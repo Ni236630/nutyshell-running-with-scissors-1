@@ -82,10 +82,10 @@ const render = (events) => {
     .join('');
 };
 
-
-
 eventHub.addEventListener('click', (e) => {
-  if (e.target.id === 'newEvent') {
+  if (e.target.id !== 'newEvent') {
+    return;
+  } else {
     NewEventForm();
   }
 });

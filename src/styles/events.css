@@ -30,10 +30,32 @@
   background-color: #ffffff;
   position: relative;
   top: 25%;
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.new-event-form__title {
+  padding-top: 1em;
+  /* border: 2px solid red; */
 }
 
 .new-event-form__form {
+  /* border: 2px solid red; */
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
-  padding: 4em;
+  align-items: center;
+}
+
+.new-event-form__form-group {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  /* max-width: 50%; */
+  margin-bottom: 0.25em;
+}
+
+#saveNewEvent {
+  width: 130px;
+  margin: 0.25em auto 0;
 }

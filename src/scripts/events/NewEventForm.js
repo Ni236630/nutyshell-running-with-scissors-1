@@ -12,15 +12,24 @@ export const NewEventForm = () => {
 const render = () => {
   return `
   <div class="new-event-form">
-  <div class="new-event-form__form">
-  <label for="newEventName">Name: </label>  
-  <input id="newEventName" type="text" autocomplete="off">
-  <label for="newEventDate">Date: </label>  
-  <input id="newEventDate" type="date">
-  <label for="newEventLocation">Location: </label>  
-  <input id="newEventLocation" type="text" autocomplete="off">
-  <button id="saveNewEvent">Save New Event</button>
-  </div>
+    <h1 class="new-event-form__title text-center">Create a New Event</h1>
+    <div class="new-event-form__form">
+      <div class="new-event-form__form-group">
+        <label for="newEventDate">Date: </label>  
+        <input id="newEventDate" type="date">
+      </div>
+      <div class="new-event-form__form-group">
+        <label for="newEventName">Name: </label>  
+        <input id="newEventName" type="text" autocomplete="off">
+      </div>
+      <div class="new-event-form__form-group">
+        <label for="newEventLocation">Location: </label>  
+        <input id="newEventLocation" type="text" autocomplete="off">
+      </div>
+      <div class="new-event-form__form-group">      
+          <button id="saveNewEvent">Save New Event</button>
+      </div>
+    </div>
   </div>
   `;
 };
@@ -52,3 +61,5 @@ eventHub.addEventListener('click', (e) => {
     }
   }
 });
+
+// TODO: add close button and click outside functionality - be sure to clear fields!
