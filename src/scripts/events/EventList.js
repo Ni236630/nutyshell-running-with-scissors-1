@@ -82,7 +82,8 @@ const render = (events) => {
     .join('');
 };
 
-eventHub.addEventListener('eventStateChanged', EventList);
+
+
 eventHub.addEventListener('click', (e) => {
   if (e.target.id === 'newEvent') {
     NewEventForm();
