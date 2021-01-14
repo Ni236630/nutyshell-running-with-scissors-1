@@ -1,6 +1,9 @@
 import { Event } from './Event.js';
 import { useEvents } from './eventProvider.js';
 import { useFriends } from '../friends/friendDataProvider.js';
+import { NewEventForm } from './NewEventForm.js';
+
+const eventHub = document.querySelector('.container');
 
 export const EventList = () => {
   const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
@@ -9,7 +12,7 @@ export const EventList = () => {
 
   // array of user's events
   const userEvents = events.filter((e) => activeUserId === e.userId);
-  
+
   if (events.length > 0) {
     // add a class designation to each user event object
     userEvents.forEach((e) => {
@@ -40,31 +43,34 @@ export const EventList = () => {
       const allEvents = userEvents.concat(fEvents);
 
       return `
-        <div class="event-list__top-row">
-          <button id="newEvent">New Event</button>      
-        </div>
-        <div class="event-list__events">
-          ${render(allEvents)}
-        </div>
-        `;
+      <div class="event-list__top-row">
+      <button id="newEvent">New Event</button>      
+      </div>
+      <div class="event-list__events">
+      ${render(allEvents)}
+      </div>
+      <dialog id="newEventFormDialog"></dialog>
+      `;
     } else {
       return `
       <div class="event-list__top-row">
-          <button id="newEvent">New Event</button>      
-        </div>
-        <div class="event-list__events">
-          ${render(userEvents)}
-        </div>
-        `;
+      <button id="newEvent">New Event</button>      
+      </div>
+      <div class="event-list__events">
+      ${render(userEvents)}
+      </div>
+      <dialog id="newEventFormDialog"></dialog>
+      `;
     }
   } else {
     return `
     <div class="event-list__top-row">
-      <button id="newEvent">New Event</button>      
+    <button id="newEvent">New Event</button>      
     </div>
     <div class="event-list__events">
-      <h2>No events found.</h2>
+    <h2>No events found.</h2>
     </div>
+    <dialog id="newEventFormDialog"></dialog>
     `;
   }
 };
@@ -75,3 +81,11 @@ const render = (events) => {
     .map((e) => Event(e))
     .join('');
 };
+
+eventHub.addEventListener('click', (e) => {
+  if (e.target.id !== 'newEvent') {
+    return;
+  } else {
+    NewEventForm();
+  }
+});
