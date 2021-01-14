@@ -18,3 +18,9 @@
     margin-bottom: 0.5em;
     background-color: coral;
 }
+
+.article__buttons {
+    display:flex;
+    justify-content: space-between;
+}
+
