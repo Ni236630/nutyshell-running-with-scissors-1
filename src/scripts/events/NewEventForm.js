@@ -77,5 +77,3 @@ eventHub.addEventListener('click', (e) => {
     }
   }
 });
-
-// TODO: add close button and click outside functionality - be sure to clear fields!
