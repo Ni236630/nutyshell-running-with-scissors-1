@@ -47,7 +47,7 @@ const render = () => {
                 </div>
                 <div class="new-article-form__form-group">
                     <label for="newArticleUrl">Url: </label>  
-                    <input id="newArticleUrl" type="url" autocomplete="off">
+                    <input id="newArticleUrl" type="text" autocomplete="off>
                 </div>
                 <div class="new-article-form__form-group">
                     <label for="newArticleSynopsis">Synopsis: </label>  

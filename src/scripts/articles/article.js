@@ -25,7 +25,7 @@ export const ArticleConverter = (articleObject) => {
     return `
         <div class="article-card, ${owner}" id="article-card--${articleObject.id}">
             <div class="article__title">${articleObject.title}</div>
-            <div class="article__url"><a href=${articleObject.url} target="_blank">Article Link</a></div>
+            <div class="article__url"><a href="${articleObject.url}" target="_blank">Article Link</a></div>
             <div class="article__synopsis">${articleObject.synopsis}</div>
             <div class="article__buttons">
                 ${editBtn}

@@ -23,14 +23,14 @@ eventHub.addEventListener("editArticle", event => {
     
     // Save the information from the old article
     oldTitle = oldArticle[1].innerHTML;
-    oldUrl = oldArticle[3].childNodes[0].namespaceURI
+    oldUrl = oldArticle[3].childNodes[0].hostname;
     oldSynopsis = oldArticle[5].innerHTML;
-    
+    console.log(oldUrl)
     // Clear out the old article variable
     oldArticle = '';
 
     // When the user presses the "Edit Article button within an article that they saved, display a dialog box
-    EditArticleForm();
+    //EditArticleForm();
 });
 
 // Targets the area in the DOM where the dialog box needs to be injected and then does so.
@@ -66,7 +66,7 @@ const render = () => {
                 </div>
                 <div class="edit-article-form__form-group">
                     <label for="editArticleUrl">Url: </label>  
-                    <input id="editArticleUrl" type="url" autocomplete="off" value="${oldUrl}">
+                    <input id="editArticleUrl" type="text" autocomplete="off" value="${oldUrl}">
                 </div>
                 <div class="edit-article-form__form-group">
                     <label for="editArticleSynopsis">Synopsis: </label>  
