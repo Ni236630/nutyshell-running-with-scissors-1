@@ -23,9 +23,9 @@ eventHub.addEventListener("editArticle", event => {
     
     // Save the information from the old article
     oldTitle = oldArticle[1].innerHTML;
-    oldUrl = oldArticle[3].childNodes[0].hostname;
+    oldUrl = oldArticle[3].childNodes[0].href;
     oldSynopsis = oldArticle[5].innerHTML;
-
+    
     // Clear out the old article variable
     oldArticle = '';
 
