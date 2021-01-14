@@ -66,22 +66,26 @@ const render = () => {
       <aside class="friend-list">
         ${FriendList()}
       </aside>
-      <article>
-        <section class="event-list">
-          ${EventList()}
-        </section>
-        <section class="message-list">
-          ${messageList()}
-        </section>
-        <section class="task-list">
-          <h1>TASK LIST</h1>
-          <!-- TaskList() --> 
-          ${taskList()}   
-        </section>
-        <section class="article-list">
-          ${ArticleList()}   
-        </section>
-      </article>
+      <div class="nutshell-main-view">
+        <article>
+          <section class="event-list">
+            ${EventList()}
+          </section>
+          <section class="message-list">
+            ${messageList()}
+          </section>
+        </article>
+        <article>
+          <section class="task-list">
+            <h1>TASK LIST</h1>
+            <!-- TaskList() --> 
+            ${taskList()}   
+          </section>
+          <section class="article-list">
+            ${ArticleList()}   
+          </section>
+        </article>
+      </div>
     </main>
     `;
 };
