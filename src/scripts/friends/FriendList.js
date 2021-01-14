@@ -81,6 +81,8 @@ eventHub.addEventListener('addFriendClicked', (e) => {
 
   if (alreadyFriends.length > 0) {
     window.alert("You're already friends!");
+  } else if (friendIdToAdd === activeUserId){
+    window.alert("You can't be friends with yourself!")
   } else {
     const newFriendRequestObject = {
       senderId: activeUserId,

@@ -19,10 +19,12 @@ eventHub.addEventListener('keyup', (e) => {
     const friends = useFriends();
     const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
     let searchResults = [];
-    let searchInput = searchBar.value;
+    let searchInput = searchBar.value.toLowerCase();
 
     if (searchInput !== '') {
-      searchResults = users.filter((u) => u.username.includes(searchInput));
+      searchResults = users.filter((u) =>
+        u.username.toLowerCase().includes(searchInput)
+      );
 
       if (searchResults.length > 0) {
         resultsContainer.innerHTML = searchResults
