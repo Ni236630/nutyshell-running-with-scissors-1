@@ -13,6 +13,7 @@ import { FriendList } from './friends/FriendList.js';
 import { taskList } from './tasks/taskList.js';
 
 import { ArticleList } from './articles/ArticleList.js';
+import { getFriendRequests } from './friends/friendRequestDataProvider.js';
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
@@ -25,6 +26,7 @@ const promises = [
   getMessages(),
   getFriends(),
   getUserMessages(),
+  getFriendRequests(),
 ];
 
 // logout button event handler
