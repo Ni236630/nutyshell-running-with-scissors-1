@@ -22,7 +22,7 @@ eventHub.addEventListener("editArticle", event => {
     let oldArticle = document.getElementById(`article-card--${articleId}`).childNodes;
     
     // Save the information from the old article
-    oldTitle = oldArticle[1].innerHTML.b;
+    oldTitle = oldArticle[1].innerHTML;
     oldUrl = oldArticle[3].childNodes[0].href;
     oldSynopsis = oldArticle[5].innerHTML;
     console.log(oldArticle[1])
