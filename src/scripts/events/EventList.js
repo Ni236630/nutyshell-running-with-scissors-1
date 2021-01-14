@@ -2,7 +2,7 @@
 // purpose: displays a list of event cards in the DOM
 
 import { Event } from './Event.js';
-import { useEvents } from './eventProvider.js';
+import { deleteEvent, getEvents, useEvents } from './eventProvider.js';
 import { useFriends } from '../friends/friendDataProvider.js';
 import { NewEventForm } from './NewEventForm.js';
 
@@ -93,4 +93,8 @@ eventHub.addEventListener('click', (e) => {
   } else {
     NewEventForm();
   }
+});
+
+eventHub.addEventListener('deleteEventClicked', (e) => {
+  deleteEvent(parseInt(e.detail.eventToDelete));
 });
