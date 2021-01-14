@@ -13,8 +13,6 @@ import { messageList } from './messages/messageList.js';
 
 import { taskList } from "./tasks/taskList.js";
 import { FriendList } from './friends/FriendList.js';
-import { taskList } from './tasks/taskList.js';
-
 import { ArticleList } from './articles/ArticleList.js';
 import { getFriendRequests } from './friends/friendRequestDataProvider.js';
 
