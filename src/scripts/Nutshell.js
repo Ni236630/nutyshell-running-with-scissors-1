@@ -18,7 +18,6 @@ import { ArticleList } from './articles/ArticleList.js';
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
 
-
 const promises = [
   getUsers(),
   getArticles(),
@@ -40,7 +39,7 @@ eventHub.addEventListener('click', (e) => {
 });
 
 export const Nutshell = () => {
-  getLocation()
+  getLocation();
   Promise.all(promises).then(render);
 };
 
@@ -87,6 +86,9 @@ const render = () => {
     `;
 };
 
+eventHub.addEventListener('eventsStateChanged', () => {
+  document.querySelector('.event-list').innerHTML = EventList();
+});
 // Listen for a state change in articles
 eventHub.addEventListener("articlesStateChanged", event => 
   document.querySelector('.article-list').innerHTML = ArticleList()
