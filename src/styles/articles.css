@@ -12,11 +12,13 @@
 .userArticle {
     margin-bottom: 0.5em;
     background-color: lime;
+    border: solid black 1px;
 }
 
 .friendArticle {
     margin-bottom: 0.5em;
     background-color: coral;
+    border: solid black 1px;
 }
 
 .article__buttons {
@@ -24,3 +26,14 @@
     justify-content: space-between;
 }
 
+.article__title, .article__url, .article__synopsis, .article__timestamp, .article__friend{
+    padding: 5px;
+}
+
+.article-list__header {
+    text-align: center;
+}
+
+.newArticleBtn {
+    margin-bottom: 10px;
+}

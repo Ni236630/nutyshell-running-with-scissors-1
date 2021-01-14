@@ -96,12 +96,15 @@ export const ArticleList = () => {
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
     return `
     <div class="article-list__top-row">
-        <button id="newArticle--${currentUser}">New Article</button>
+        <h3 class="article-list__header">Article List</h3>
+        <button id="newArticle--${currentUser}" class="newArticleBtn">New Article</button>
     </div>
     <dialog id="newArticleFormDialog"></dialog>
     <dialog id="editArticleFormDialog"></dialog>
     <div class="article-list__articles">
-        ${relevantArticles.map(article => ArticleConverter(article)).join("")}
+        ${relevantArticles
+            .sort((a, b) => a.timestamp.localeCompare(b.timestamp))
+            .map(article => ArticleConverter(article)).join("")}
     </div>
     `;
 };
