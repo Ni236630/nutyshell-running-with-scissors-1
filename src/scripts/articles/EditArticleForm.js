@@ -66,7 +66,7 @@ const render = () => {
                 </div>
                 <div class="edit-article-form__form-group">
                     <label for="editArticleUrl">Url: </label>  
-                    <input id="editArticleUrl" type="text" autocomplete="off" value="${oldUrl}">
+                    <input id="editArticleUrl" type="url" autocomplete="off" value="${oldUrl}">
                 </div>
                 <div class="edit-article-form__form-group">
                     <label for="editArticleSynopsis">Synopsis: </label>  
@@ -96,7 +96,8 @@ eventHub.addEventListener('click', (e) => {
         userId: articleUser,
         title: articleTitle,
         url: articleUrl,
-        synopsis: articleSynopsis
+        synopsis: articleSynopsis,
+        timestamp: new Date()
       };
 
       editArticle(newArticle);

@@ -47,7 +47,7 @@ const render = () => {
                 </div>
                 <div class="new-article-form__form-group">
                     <label for="newArticleUrl">Url: </label>  
-                    <input id="newArticleUrl" type="text" autocomplete="off">
+                    <input id="newArticleUrl" type="url" autocomplete="off">
                 </div>
                 <div class="new-article-form__form-group">
                     <label for="newArticleSynopsis">Synopsis: </label>  
@@ -76,7 +76,8 @@ eventHub.addEventListener('click', (e) => {
         userId: articleUser,
         title: articleTitle,
         url: articleUrl,
-        synopsis: articleSynopsis
+        synopsis: articleSynopsis,
+        timestamp: new Date()
       };
 
       saveArticle(newArticle);
