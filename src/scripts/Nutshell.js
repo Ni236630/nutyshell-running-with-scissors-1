@@ -63,7 +63,6 @@ const render = () => {
     </article>
     <main>
       <aside class="friend-list">
-        <h1>FRIEND LIST</h1>
         ${FriendList()}
       </aside>
       <article>
