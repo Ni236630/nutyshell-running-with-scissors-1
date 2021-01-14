@@ -13,8 +13,6 @@ import { messageList } from './messages/messageList.js';
 
 import { taskList } from "./tasks/taskList.js";
 import { FriendList } from './friends/FriendList.js';
-import { taskList } from './tasks/taskList.js';
-
 import { ArticleList } from './articles/ArticleList.js';
 import { getFriendRequests } from './friends/friendRequestDataProvider.js';
 
@@ -113,4 +111,9 @@ eventHub.addEventListener("messagesStateChanged", () => {
 });
 eventHub.addEventListener('friendsStateChanged', () => {
   document.querySelector('.friend-list').innerHTML = FriendList();
+});
+
+//Listen for state change of tasks
+eventHub.addEventListener('tasksStateChanged', () => {
+  document.querySelector('.task-list').innerHTML = taskList();
 });
