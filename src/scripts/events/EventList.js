@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: displays a list of event cards in the DOM
+
 import { Event } from './Event.js';
 import { useEvents } from './eventProvider.js';
 import { useFriends } from '../friends/friendDataProvider.js';
@@ -26,11 +29,13 @@ export const EventList = () => {
     // array of events for all friends
     let fEvents = [];
     friendIds.forEach((i) => {
-      let event = events.find((e) => i === e.userId);
-      if (!event) {
+      let eventList = events.filter((e) => i === e.userId);
+      if (eventList.length === 0) {
         return;
       } else {
-        fEvents.push(event);
+        eventList.forEach((e) => {
+          fEvents.push(e);
+        });
       }
     });
 

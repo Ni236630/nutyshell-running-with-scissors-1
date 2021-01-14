@@ -9,11 +9,11 @@ import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
 import { weatherList, getLocation } from './weather/weatherList.js';
 import { EventList } from './events/EventList.js';
-
-import { taskList } from "./tasks/taskList.js";
+import { FriendList } from './friends/FriendList.js';
+import { taskList } from './tasks/taskList.js';
 
 import { ArticleList } from './articles/ArticleList.js';
-
+import { getFriendRequests } from './friends/friendRequestDataProvider.js';
 
 const eventHub = document.querySelector('.container');
 const contentTarget = document.querySelector('.dashboard');
@@ -26,6 +26,7 @@ const promises = [
   getMessages(),
   getFriends(),
   getUserMessages(),
+  getFriendRequests(),
 ];
 
 // logout button event handler
@@ -62,8 +63,7 @@ const render = () => {
     </article>
     <main>
       <aside class="friend-list">
-        <h1>FRIEND LIST</h1>
-        <!-- FriendList() -->
+        ${FriendList()}
       </aside>
       <article>
         <section class="event-list">
@@ -90,6 +90,11 @@ eventHub.addEventListener('eventsStateChanged', () => {
   document.querySelector('.event-list').innerHTML = EventList();
 });
 // Listen for a state change in articles
-eventHub.addEventListener("articlesStateChanged", event => 
-  document.querySelector('.article-list').innerHTML = ArticleList()
+eventHub.addEventListener(
+  'articlesStateChanged',
+  (event) => (document.querySelector('.article-list').innerHTML = ArticleList())
 );
+
+eventHub.addEventListener('friendsStateChanged', () => {
+  document.querySelector('.friend-list').innerHTML = FriendList();
+});

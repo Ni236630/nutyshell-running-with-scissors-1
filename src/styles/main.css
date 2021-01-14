@@ -1,6 +1,8 @@
 @import url('./events.css');
 @import url('./articles.css');
 @import url('./task.css');
+@import url('./friends.css');
+
 
 * {
   margin: 0;
