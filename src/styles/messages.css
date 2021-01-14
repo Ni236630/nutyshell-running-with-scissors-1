@@ -1,0 +1,12 @@
+.message-list {   
+    border: 2px solid red;
+    padding: 1em;
+    margin-top: 00.5em;
+    margin-bottom: 00.5em;
+    height: 250px;
+}
+
+.chatMessages {
+    overflow-y: scroll;
+    height: 150px;
+}

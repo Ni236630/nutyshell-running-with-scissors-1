@@ -1,4 +1,4 @@
-// Component Author: Aaron Resch
+// Component Author: Aaron Resch, Ryan Youngblood
 // Purpose: Data provider for user/messages join table
 
 const eventHub = document.querySelector('.container');
@@ -20,18 +20,23 @@ export const getUserMessages = () => {
 
 export const useUserMessages = () => userMessages.slice();
 
-export const saveUserMessage = (recipientId, messageId) => {
+export const saveUserMessage = (userMessage) => {
   return fetch('http://localhost:8088/userMessages', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      userId: activeUserId,
-      recipientId: recipientId,
-      messageId: messageId,
-    }),
+    // Refactored this to accomodate the object I need to pass in - Ryan Y.
+    body: JSON.stringify(userMessage),
   })
     .then(getUserMessages)
     .then(dispatchStateChangeEvent);
 };
+
+export const deleteUserMessage = (userMessageId) => {
+  return fetch(`http://localhost:8088/userMessages/${userMessageId}`, {
+    method: "DELETE"
+  })
+    .then(getUserMessages)
+    .then(dispatchStateChangeEvent)
+}

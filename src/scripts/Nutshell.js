@@ -9,6 +9,9 @@ import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
 import { weatherList, getLocation } from './weather/weatherList.js';
 import { EventList } from './events/EventList.js';
+import { messageList } from './messages/messageList.js';
+
+import { taskList } from "./tasks/taskList.js";
 import { FriendList } from './friends/FriendList.js';
 import { taskList } from './tasks/taskList.js';
 
@@ -70,8 +73,7 @@ const render = () => {
           ${EventList()}
         </section>
         <section class="message-list">
-          <h1>MESSAGE LIST</h1>
-          <!-- MessageList() -->    
+          ${messageList()}
         </section>
         <section class="task-list">
           <h1>TASK LIST</h1>
@@ -94,6 +96,21 @@ eventHub.addEventListener("articlesStateChanged", () =>
   document.querySelector('.article-list').innerHTML = ArticleList()
 );
 
+// Listen for a state change in messages
+eventHub.addEventListener("messagesStateChanged", () => {
+  // Update my app state data to properly update the DOM
+  getUsers()
+    .then(getMessages)
+    .then(getUserMessages)
+    .then(() => {
+      // Rend to the DOM
+      document.querySelector('.message-list').innerHTML = messageList()
+      // Define the chat area
+      let chatBox = document.getElementById("chatMessages")
+      // Keep the chat area scrolled to the bottom to show most recent messages only
+      chatBox.scrollTop = chatBox.scrollHeight
+    })
+});
 eventHub.addEventListener('friendsStateChanged', () => {
   document.querySelector('.friend-list').innerHTML = FriendList();
 });

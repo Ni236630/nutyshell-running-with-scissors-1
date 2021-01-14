@@ -1,3 +1,6 @@
+// Component Author: Aaron Resch, Ryan Youngblood
+// Purpose: Data provider messages table
+
 let messages = [];
 const eventHub = document.querySelector('.container');
 
@@ -27,3 +30,12 @@ export const saveMessage = (message) => {
     .then(getMessages)
     .then(dispatchStateChangeEvent);
 };
+
+// Added the ability to delete messages - Ryan Y.
+export const deleteMessage = entryId => {
+  return fetch(`http://localhost:8088/messages/${entryId}`, {
+    method: "DELETE"
+  })
+    .then(getMessages)
+    .then(dispatchStateChangeEvent)
+}
