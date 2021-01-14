@@ -13,7 +13,7 @@ export const ArticleConverter = (articleObject) => {
         owner = "friendArticle";
         editBtn = "";
         deleteBtn = "";
-        friendName = `<div class="article__friend">saved by: <strong>${articleObject.friendObject.username}</strong></div>`;
+        friendName = `<div class="article__friend">saved by: ${articleObject.friendObject.username}</div>`;
 
     } else {
         // If this is the current user's article, specify that it is and allow the delete and edit buttons

@@ -92,13 +92,13 @@ export const ArticleList = () => {
     // -------------------- ALL RELEVANT ARTICLES --------------------
     // Combine the user's articles with the articles that their friend(s) saved.
     let relevantArticles = [...userArticlesFinal, ...friendsArticlesFinal];
-    console.log("friends articles",friendsArticlesFinal)
 
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
     return `
     <div class="article-list__top-row">
         <button id="newArticle--${currentUser}">New Article</button>
     </div>
+    <dialog id="newArticleFormDialog"></dialog>
     <div class="article-list__articles">
         ${relevantArticles.map(article => ArticleConverter(article)).join("")}
     </div>
