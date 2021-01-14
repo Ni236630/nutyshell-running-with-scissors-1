@@ -7,11 +7,11 @@ import { saveArticle } from './articleDataProvider.js';
 // Selectors
 const eventHub = document.querySelector(".container");
 
-eventHub.addEventListener("addArticle", event => {
-    console.log("I heard someone wants to add a new article for user #:", event.detail.userId)
-    NewArticleForm();
-});
+// When the user presses the "New Article button at the top of the articles list, display the diglog box
+eventHub.addEventListener("addArticle", () => NewArticleForm());
 
+// Targets the area in the DOM where the dialog box needs to be injected and then does so.
+// If the user closes out the dialog box, clear out all of the related variables
 const NewArticleForm = () => {
     const contentTarget = document.getElementById('newArticleFormDialog');
     contentTarget.innerHTML = '';
@@ -32,6 +32,7 @@ const NewArticleForm = () => {
     });
 };
 
+// Renders the dialog box when called
 const render = () => {
     return `
         <div class="new-article-form">
@@ -60,6 +61,8 @@ const render = () => {
     `;
 };
 
+// When the user clicks the save button inside the dialog box, save the data inside as a new article. 
+// If all fields are not filled out, display an alert
 eventHub.addEventListener('click', (e) => {
   if (e.target.id === 'saveNewArticle') {
     const contentTarget = document.getElementById('newArticleFormDialog');
@@ -84,6 +87,6 @@ eventHub.addEventListener('click', (e) => {
       contentTarget.close();
     } else {
       window.alert('Please fill in all fields');
-    }
-  }
+    };
+  };
 });

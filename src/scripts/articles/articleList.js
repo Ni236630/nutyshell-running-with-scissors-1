@@ -99,6 +99,7 @@ export const ArticleList = () => {
         <button id="newArticle--${currentUser}">New Article</button>
     </div>
     <dialog id="newArticleFormDialog"></dialog>
+    <dialog id="editArticleFormDialog"></dialog>
     <div class="article-list__articles">
         ${relevantArticles.map(article => ArticleConverter(article)).join("")}
     </div>
