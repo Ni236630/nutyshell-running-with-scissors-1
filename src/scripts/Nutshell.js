@@ -86,3 +86,8 @@ const render = () => {
     </main>
     `;
 };
+
+// Listen for a state change in articles
+eventHub.addEventListener("articlesStateChanged", event => 
+  document.querySelector('.article-list').innerHTML = ArticleList()
+);
