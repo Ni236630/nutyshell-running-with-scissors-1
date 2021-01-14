@@ -6,6 +6,8 @@ let allUsers = []
 let allMessages = []
 let allUserMessages = []
 
+// const eventHub = document.querySelector('.privacy__select')
+
 export const messageList = () => {
 
     allUsers = useUsers()
@@ -26,7 +28,23 @@ export const messageList = () => {
 
     console.log(usersNamesToDisplay)
     return `
-    ${usersNamesToDisplay.map(theUserName => `${theUserName.username}: `).join("")} ${messagesToDisplay.map(theUserMessage => `<p>${theUserMessage.message}</p>`).join("")}
-    <br><br><label for="fname">Enter a message:</label> <input type="text" id="fname" name="fname"> <button>Submit</button>
+    
+    <select class="privacy__select" id="privacySelect">
+        <option value=0>Public</option>
+        <option value=1>Private</option>
+    </select>
+
+    <div class="chatMessages">
+        ${usersNamesToDisplay.map(theUserName => `${theUserName.username}: `).join("")} ${messagesToDisplay.map(theUserMessage => `<p>${theUserMessage.message}</p>`).join("")}
+    </div>
+    <div class="enterMessages"><br><label for="fname">Enter a message:</label> <input type="text" id="fname" name="fname"> <button>Submit</button></div>
+    
     `
 }
+
+// eventHub.addEventListener("change", e => {
+//     if (e.target.id === "privacySelect") {
+//         let privacyOptionChosen = e.target.value
+//         console.log(privacyOptionChosen)
+//     }
+// })
