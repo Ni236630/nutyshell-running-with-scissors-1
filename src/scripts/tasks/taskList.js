@@ -2,6 +2,7 @@
 import {useTasks} from "./taskDataProvider.js";
 import { taskHTMLConverter } from "./TaskHTML.js";
 import { taskDialog } from "./NewTaskForm.js";
+import "./deleteTask.js"
 
 /*  variables for events and injection    */
 
@@ -25,7 +26,17 @@ eventHub.addEventListener("click", customEvent => {
       }
     })
   return eventHub.dispatchEvent(customEvent)}
-})
+  else if(customEvent.target.id ==="deleteTask"){
+      const activeUserId = parseInt(sessionStorage.getItem('activeUser'))
+     const taskId = customEvent.target.value
+    const deleteEvent = new CustomEvent("deleteTaskClicked",{
+      detail: {
+        taskId: taskId
+      }
+    })
+  return eventHub.dispatchEvent(deleteEvent)
+    }
+  })
 
 /*  initial list of tasks   */
 
