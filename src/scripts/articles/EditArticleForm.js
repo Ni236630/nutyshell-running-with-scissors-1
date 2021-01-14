@@ -25,7 +25,7 @@ eventHub.addEventListener("editArticle", event => {
     oldTitle = oldArticle[1].innerHTML;
     oldUrl = oldArticle[3].childNodes[0].href;
     oldSynopsis = oldArticle[5].innerHTML;
-    console.log(oldArticle[1])
+    
     // Clear out the old article variable
     oldArticle = '';
 
