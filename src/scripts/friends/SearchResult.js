@@ -8,7 +8,7 @@ export const SearchResult = (user) => {
       <p><strong>Email: </strong>${user.email}</p>
     </div>
     <div class="friend-card__button-container">
-      <button id="addFriend--${user.id}">Add Friend</button>
+      <button id="addFriend--${user.id}">Send Friend Request</button>
     </div>
   </div>
   `;

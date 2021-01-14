@@ -1,12 +1,13 @@
 // author: Aaron Resch
 // purpose: list Friend cards in dashboard, allow users to search for friends to add, allow users to delete friends
 import { useUsers } from '../users/userDataProvider.js';
-import { useFriends, saveFriend } from './friendDataProvider.js';
+import { useFriends, saveFriend, deleteFriend } from './friendDataProvider.js';
 import { Friend } from './Friend.js';
 import { FriendSearch } from './FriendSearch.js';
+import { FriendRequests } from './FriendRequests.js';
+import { saveFriendRequest } from './friendRequestDataProvider.js';
 
 const eventHub = document.querySelector('.container');
-const contentTarget = document.querySelector('.friend-list');
 
 export const FriendList = () => {
   const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
@@ -23,7 +24,10 @@ export const FriendList = () => {
 
   return `
   <section class="friend-list__content">
-    <div class="friend-list__requests">${FriendRequests()}</div>
+    <div class="friend-list__requests">
+      <h3>Active Friend Requests: </h3>
+      <div id="friendRequests">${FriendRequests()}</div>
+    </div>
     <div class="friend-list__add">
       <h3>Search for a Friend</h3>
       <div class="friend-list__search-container">${FriendSearch()}</div>
@@ -60,11 +64,35 @@ eventHub.addEventListener('addFriendClicked', (e) => {
   if (alreadyFriends.length > 0) {
     window.alert("You're already friends!");
   } else {
-    const newFriendObject = {
-      userId: activeUserId,
-      friendId: friendIdToAdd,
+    const newFriendRequestObject = {
+      senderId: activeUserId,
+      recipientId: friendIdToAdd,
+      isAccepted: false,
     };
 
-    saveFriend(newFriendObject);
+    saveFriendRequest(newFriendRequestObject);
   }
+});
+
+eventHub.addEventListener('friendRequestsStateChanged', () => {
+  document.getElementById('friendRequests').innerHTML = FriendRequests();
+});
+
+eventHub.addEventListener('removeFriendClicked', (e) => {
+  const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
+  const friendIdToRemove = parseInt(e.detail.userToRemove);
+  const friendRels = useFriends();
+
+  const friendRel1 = friendRels.find(
+    (rel) => rel.userId === activeUserId && rel.friendId === friendIdToRemove
+  );
+
+  const friendRel2 = friendRels.find(
+    (rel) => rel.userId === friendIdToRemove && rel.friendId === activeUserId
+  );
+
+  deleteFriend(friendRel1.id);
+  deleteFriend(friendRel2.id);  
+  eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
+  eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
 });

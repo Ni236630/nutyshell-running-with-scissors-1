@@ -1,5 +1,6 @@
 // author: Aaron Resch
 // purpose: HTML representation of friend cards to be shown in FriendsList
+const eventHub = document.querySelector('.container');
 
 export const Friend = (userObject) => {
   return `
@@ -12,5 +13,19 @@ export const Friend = (userObject) => {
       <button id="removeFriend--${userObject.id}">Remove Friend</button>
     </div>
   </div>
-  `
-}
+  `;
+};
+
+eventHub.addEventListener('click', (e) => {
+  if (!e.target.id.startsWith('removeFriend--')) {
+    return;
+  } else {
+    const [unused, userToRemove] = e.target.id.split('--');
+    const customEvent = new CustomEvent('removeFriendClicked', {
+      detail: {
+        userToRemove,
+      },
+    });
+    eventHub.dispatchEvent(customEvent);
+  }
+});
