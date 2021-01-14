@@ -41,6 +41,21 @@ eventHub.addEventListener("click", customEvent => {
   return eventHub.dispatchEvent(deleteEvent)
     }
   })
+  
+  //dispatch event for checkbox!
+  
+ eventHub.addEventListener("checkbox", customEvent => {
+   const button = customEvent.target.id.split("--")[0]
+   const buttonId = customEvent.target.id.split("--")[1]
+   if(button ==="taskBox"){
+     const makeComplete = new CustomEvent("checkTaskOff",{
+       detail: {
+         taskId: buttonId
+       }
+     })
+     eventHub.dispatchEvent(makeComplete)
+   }
+ }) 
 
 /*  initial list of tasks   */
 
