@@ -1,0 +1,26 @@
+.article-list {   
+    border: 2px solid red;
+    padding: 1em;
+    overflow-y: scroll;
+    height: 250px;
+}
+
+.article-list__top-row {
+    margin-bottom: 0.25em;
+}
+
+.userArticle {
+    margin-bottom: 0.5em;
+    background-color: lime;
+}
+
+.friendArticle {
+    margin-bottom: 0.5em;
+    background-color: coral;
+}
+
+.article__buttons {
+    display:flex;
+    justify-content: space-between;
+}
+

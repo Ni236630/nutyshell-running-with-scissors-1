@@ -1,4 +1,5 @@
-// Ryan DeVault - Purpose: Retrieve, save and/or delete articles information from the database.json file within the api folder
+// Ryan DeVault - Purpose: Retrieve, save and/or delete articles 
+// information from the database.json file within the api folder
 
 // Local Variables
 let articles = [];
