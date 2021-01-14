@@ -90,9 +90,8 @@ eventHub.addEventListener('eventsStateChanged', () => {
   document.querySelector('.event-list').innerHTML = EventList();
 });
 // Listen for a state change in articles
-eventHub.addEventListener(
-  'articlesStateChanged',
-  (event) => (document.querySelector('.article-list').innerHTML = ArticleList())
+eventHub.addEventListener("articlesStateChanged", () => 
+  document.querySelector('.article-list').innerHTML = ArticleList()
 );
 
 eventHub.addEventListener('friendsStateChanged', () => {
