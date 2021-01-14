@@ -4,6 +4,8 @@ const eventHub = document.querySelector('.container');
 const dispatchStateChangeEvent = () => {
   const requestChangeEvent = new CustomEvent('friendRequestsStateChanged');
   eventHub.dispatchEvent(requestChangeEvent);
+  eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
+  eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
 };
 
 export const getFriendRequests = () => {

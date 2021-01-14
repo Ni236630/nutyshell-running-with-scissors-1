@@ -18,12 +18,29 @@ export const FriendList = () => {
     (rel) => rel.userId === activeUserId
   );
 
-  const thisUserFriends = thisUserFriendRels.map((rel) => {
-    return users.find((u) => rel.friendId === u.id);
-  });
+  if (thisUserFriendRels.length > 0) {
+    const thisUserFriends = thisUserFriendRels.map((rel) => {
+      return users.find((u) => rel.friendId === u.id);
+    });
 
-  return `
-  <section class="friend-list__content">
+    return `
+    <section class="friend-list__content">
+      <div class="friend-list__requests">
+        <h3>Active Friend Requests: </h3>
+        <div id="friendRequests">${FriendRequests()}</div>
+      </div>
+      <div class="friend-list__add">
+        <h3>Search for a Friend</h3>
+        <div class="friend-list__search-container">${FriendSearch()}</div>
+      </div>
+      <div class="friend-list__friends">
+        <h3>Your Friends</h3>
+        <div class="friend-list__list">${render(thisUserFriends)}</div>
+      </div>
+    </section>
+    `;
+  } else {
+    return `<section class="friend-list__content">
     <div class="friend-list__requests">
       <h3>Active Friend Requests: </h3>
       <div id="friendRequests">${FriendRequests()}</div>
@@ -33,11 +50,12 @@ export const FriendList = () => {
       <div class="friend-list__search-container">${FriendSearch()}</div>
     </div>
     <div class="friend-list__friends">
-      <h3>Your Friends</h3>
-      <div class="friend-list__list">${render(thisUserFriends)}</div>
-    </div>
-  </section>
-  `;
+        <h3>Your Friends</h3>
+        <div class="friend-list__list"><h2>YOU HAVE NO FRIENDS.</h2></div>
+        </div>
+      </section>
+    `;
+  }
 };
 
 const render = (userArray) => {
@@ -93,6 +111,4 @@ eventHub.addEventListener('removeFriendClicked', (e) => {
 
   deleteFriend(friendRel1.id);
   deleteFriend(friendRel2.id);  
-  eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
-  eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
 });

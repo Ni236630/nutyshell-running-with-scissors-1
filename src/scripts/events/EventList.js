@@ -94,5 +94,3 @@ eventHub.addEventListener('click', (e) => {
     NewEventForm();
   }
 });
-
-// TODO: refactor so that friends display more than one event (filter instead of find)

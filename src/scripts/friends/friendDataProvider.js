@@ -10,6 +10,8 @@ const eventHub = document.querySelector('.container');
 const dispatchStateChangeEvent = () => {
   const friendsStateChangedEvent = new CustomEvent('friendsStateChanged');
   eventHub.dispatchEvent(friendsStateChangedEvent);
+  eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
+  eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
 };
 
 // GETs friends from database.json and stores them in the local friends variable
