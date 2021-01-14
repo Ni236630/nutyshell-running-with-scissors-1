@@ -7,12 +7,20 @@ export const NewEventForm = () => {
   contentTarget.innerHTML = '';
   contentTarget.innerHTML = render();
   contentTarget.showModal();
+  document
+    .getElementById('new-event-form__close')
+    .addEventListener('click', () => {
+      contentTarget.close();
+    });
 };
 
 const render = () => {
   return `
   <div class="new-event-form">
-    <h1 class="new-event-form__title text-center">Create a New Event</h1>
+    <div class="new-event-form__top-row">
+      <h1 class="new-event-form__title text-center">Create a New Event</h1>
+      <button id="new-event-form__close">Close Form</button>
+    </div>
     <div class="new-event-form__form">
       <div class="new-event-form__form-group">
         <label for="newEventDate">Date: </label>  

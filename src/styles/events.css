@@ -39,6 +39,16 @@
   /* border: 2px solid red; */
 }
 
+.new-event-form__top-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.new-event-form__top-row h1 {
+  font-size: 36px;
+  width: 100%;
+}
+
 .new-event-form__form {
   /* border: 2px solid red; */
   margin-top: 1em;
@@ -58,4 +68,8 @@
 #saveNewEvent {
   width: 130px;
   margin: 0.25em auto 0;
+}
+
+#new-event-form__close {
+  align-self: flex-end;
 }
