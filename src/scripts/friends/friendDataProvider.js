@@ -12,6 +12,7 @@ const dispatchStateChangeEvent = () => {
   eventHub.dispatchEvent(friendsStateChangedEvent);
   eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
   eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
+  eventHub.dispatchEvent(new CustomEvent('messagesStateChanged'));
 };
 
 // GETs friends from database.json and stores them in the local friends variable

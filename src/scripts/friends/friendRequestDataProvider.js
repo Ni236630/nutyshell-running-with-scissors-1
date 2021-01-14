@@ -6,6 +6,7 @@ const dispatchStateChangeEvent = () => {
   eventHub.dispatchEvent(requestChangeEvent);
   eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
   eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
+  eventHub.dispatchEvent(new CustomEvent('messagesStateChanged'));
 };
 
 export const getFriendRequests = () => {
