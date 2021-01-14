@@ -4,6 +4,7 @@
 // Imports
 import { useArticles} from "./articleDataProvider.js";
 import { useFriends } from "../friends/friendDataProvider.js";
+import { useUsers } from "../users/userDataProvider.js";
 import { ArticleConverter } from "./Article.js";
 import "./NewArticleForm.js";
 import "./EditArticleForm.js";
@@ -14,6 +15,7 @@ import "./DeleteArticleForm.js";
 let allArticles = [];
 let allRelationships = [];
 let currentUser = "";
+let allUsers = [];
 
 // Selectors
 const eventHub = document.querySelector(".container");
@@ -75,19 +77,22 @@ export const ArticleList = () => {
         relationship.userId === currentUser);
 
     // Saves articles that belong to the current user's friends
-    let friendArticlesRaw = allArticles.filter(article => 
+    let friendsArticlesRaw = allArticles.filter(article => 
         userFriends.find(relationship => 
             relationship.friendId === article.userId));
 
-    // Attach isFriend property on each article and set to true
-    let friendsArticlesFinal = friendArticlesRaw.map(article => {
+    // Attach isFriend property on each article and set to true, then add the user's name
+    allUsers = useUsers();
+    let friendsArticlesFinal = friendsArticlesRaw.map(article => {
         article.isFriend = true;
+        article.friendObject = allUsers.find(user => user.id === article.userId);
         return article;
     });
 
     // -------------------- ALL RELEVANT ARTICLES --------------------
     // Combine the user's articles with the articles that their friend(s) saved.
     let relevantArticles = [...userArticlesFinal, ...friendsArticlesFinal];
+    console.log("friends articles",friendsArticlesFinal)
 
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
     return `
