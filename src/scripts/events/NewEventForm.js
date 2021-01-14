@@ -10,7 +10,15 @@ export const NewEventForm = () => {
   document
     .getElementById('new-event-form__close')
     .addEventListener('click', () => {
+      let eventName = document.querySelector('#newEventName').value;
+      let eventDate = document.querySelector('#newEventDate').value;
+      let eventLocation = document.querySelector('#newEventLocation').value;
+      let eventUser = parseInt(sessionStorage.getItem('activeUser'));
       contentTarget.close();
+      eventName = '';
+      eventDate = null;
+      eventLocation = '';
+      eventUser = '';
     });
 };
 
