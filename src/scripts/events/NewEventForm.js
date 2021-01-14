@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: affordance for users to create new events
+
 import { saveEvent } from './eventProvider.js';
 
 const eventHub = document.querySelector('.container');

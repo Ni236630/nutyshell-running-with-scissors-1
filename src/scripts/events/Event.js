@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: event card HTML component
+
 import { useUsers } from '../users/userDataProvider.js';
 
 export const Event = (eventObject) => {
