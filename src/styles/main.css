@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+.dashboard {
+  height: 95%;
+}
+
 .container {
   padding: 1em;
   height: 100vh;
@@ -19,20 +23,30 @@
 main {
   display: flex;
   justify-content: center;
+  height: 100%;
 }
 
 .nutshell-main-view {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  margin-left: 1em;
+  max-width: 90%;
+  min-width: 50%;
 }
 
 .nutshell-main-view > article {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 
 .friend-list__content {
+  height: 100%;
+}
+
+.event-list, .message-list, .task-list, .article-list {
+  width: 50%;
   height: 100%;
 }
 
