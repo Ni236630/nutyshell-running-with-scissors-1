@@ -25,12 +25,12 @@ eventHub.addEventListener("editArticle", event => {
     oldTitle = oldArticle[1].innerHTML;
     oldUrl = oldArticle[3].childNodes[0].hostname;
     oldSynopsis = oldArticle[5].innerHTML;
-    console.log(oldUrl)
+
     // Clear out the old article variable
     oldArticle = '';
 
     // When the user presses the "Edit Article button within an article that they saved, display a dialog box
-    //EditArticleForm();
+    EditArticleForm();
 });
 
 // Targets the area in the DOM where the dialog box needs to be injected and then does so.
