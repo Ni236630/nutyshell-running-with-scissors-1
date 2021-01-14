@@ -7,7 +7,7 @@ import { taskDialog } from "./NewTaskForm.js";
 
 let tasks =[]
 
-const eventHub = document.querySelector(".dashboard")
+const eventHub = document.querySelector(".container")
 
 /*  events to render    */
 
@@ -18,9 +18,15 @@ eventHub.addEventListener("tasksStateChanged",() => {
 /*  events dispatch click   */
 eventHub.addEventListener("click", customEvent => {
   if(customEvent.target.id === "addTask"){
-    const addclick = 4;
-  eventHub.dispatchEvent(addclick)}
+    const activeUserId = parseInt(sessionStorage.getItem('activeUser'))
+    const customEvent = new CustomEvent("newTaskClicked",{
+      detail: {
+        userId: activeUserId
+      }
+    })
+  return eventHub.dispatchEvent(customEvent)}
 })
+
 /*  initial list of tasks   */
 
 export const taskList = () => {
