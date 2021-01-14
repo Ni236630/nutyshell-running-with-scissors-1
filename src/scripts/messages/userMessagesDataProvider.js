@@ -32,3 +32,11 @@ export const saveUserMessage = (userMessage) => {
     .then(getUserMessages)
     .then(dispatchStateChangeEvent);
 };
+
+export const deleteUserMessage = (userMessageId) => {
+  return fetch(`http://localhost:8088/userMessages/${userMessageId}`, {
+    method: "DELETE"
+  })
+    .then(getUserMessages)
+    .then(dispatchStateChangeEvent)
+}

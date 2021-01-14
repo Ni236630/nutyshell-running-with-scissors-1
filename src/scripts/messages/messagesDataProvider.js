@@ -33,7 +33,7 @@ export const saveMessage = (message) => {
 
 // Added the ability to delete messages - Ryan Y.
 export const deleteMessage = entryId => {
-  return fetch(`http://localhost:8088/messages.${entryId}`, {
+  return fetch(`http://localhost:8088/messages/${entryId}`, {
     method: "DELETE"
   })
     .then(getMessages)

@@ -2,7 +2,7 @@
 // Purpose: List user messages to the messages (chat) section on the DOM
 
 import { deleteMessage, getMessages, saveMessage, useMessages } from "./messagesDataProvider.js"
-import { saveUserMessage, useUserMessages } from "./userMessagesDataProvider.js"
+import { deleteUserMessage, saveUserMessage, useUserMessages } from "./userMessagesDataProvider.js"
 import { useUsers } from '../users/userDataProvider.js'
 
 // Setup the arrays to plug data in
@@ -36,7 +36,7 @@ export const messageList = () => {
 
             if (relatedUser.id === activeUser) {
                 return `
-                <div class="chatMsg" id="chat--${relatedMessage.id}"><b>${relatedUser.username}</b>: ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}">Delete</button></div>
+                <div class="chatMsg" id="chat--${relatedMessage.id}"><b>${relatedUser.username}</b>: ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
                 `
             } else {
                 // Return each chat message with the username
@@ -73,9 +73,8 @@ eventHub.addEventListener("click", clickEvent => {
         
         let matchingButton = clickEvent.target.id.split("--")
         let buttonName = matchingButton[1]
-        let chatEntryId = matchingButton[2]
-
-        console.log(buttonName)
+        let messageId = matchingButton[2]
+        let userMessageId = matchingButton[3]
 
         // If that button is the Entry button then..
         if (buttonName === "Entry") {
@@ -114,12 +113,11 @@ eventHub.addEventListener("click", clickEvent => {
 
         // If that button is the Delete button then...
         } else if (buttonName === "Delete") {
-            console.log(chatEntryId)
-            deleteMessage(chatEntryId)
+            
+            deleteUserMessage(userMessageId)
+            deleteMessage(messageId)
         }
     }
-
-
 })
 
 // Event listener for public/private filtering. Needs work!
