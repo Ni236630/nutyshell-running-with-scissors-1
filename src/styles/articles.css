@@ -32,6 +32,10 @@
     padding: 5px;
 }
 
+.article__title {
+  font-weight: bold;
+}
+
 .article-list__header {
     text-align: center;
 }
@@ -46,14 +50,14 @@
 /* -------------------------- */
 
 
-#newArticleFormDialog {
+#newArticleFormDialog, #editArticleFormDialog {
     position: absolute;
     height: 100%;
     width: 100%;
     background-color: #aaaaaaaa;
   }
   
-  .new-article-form {
+  .new-article-form, .edit-article-form {
     background-color: #ffffff;
     position: relative;
     top: 25%;
@@ -61,23 +65,23 @@
     margin: 0 auto;
   }
   
-  .new-article-form__title {
+  .new-article-form__title, .edit-article-form__title {
     padding-top: 1em;
     /* border: 2px solid red; */
   }
   
-  .new-article-form__top-row {
+  .new-article-form__top-row, .edit-article-form__top-row {
     display: flex;
     justify-content: flex-end;
   }
   
-  .new-article-form__top-row h1 {
+  .new-article-form__top-row h1, .edit-article-form__top-row h1 {
     font-size: 36px;
     width: 100%;
     text-align: center;
   }
   
-  .new-article-form__form {
+  .new-article-form__form, .edit-article-form__form {
     /* border: 2px solid red; */
     margin-top: 1em;
     display: flex;
@@ -85,7 +89,7 @@
     align-items: center;
   }
   
-  .new-article-form__form-group {
+  .new-article-form__form-group, .edit-article-form__form-group {
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -93,11 +97,11 @@
     margin-bottom: 0.25em;
   }
   
-  #saveNewArticle {
+  #saveNewArticle, #editNewArticle {
     width: 130px;
     margin: 0.25em auto 0;
   }
   
-  #new-article-form__close {
+  #new-article-form__close, #edit-article-form__close {
     align-self: flex-end;
   }

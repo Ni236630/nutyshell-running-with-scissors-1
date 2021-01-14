@@ -22,10 +22,10 @@ eventHub.addEventListener("editArticle", event => {
     let oldArticle = document.getElementById(`article-card--${articleId}`).childNodes;
     
     // Save the information from the old article
-    oldTitle = oldArticle[1].innerHTML;
+    oldTitle = oldArticle[1].innerHTML.b;
     oldUrl = oldArticle[3].childNodes[0].href;
     oldSynopsis = oldArticle[5].innerHTML;
-    
+    console.log(oldArticle[1])
     // Clear out the old article variable
     oldArticle = '';
 
@@ -56,7 +56,7 @@ const render = () => {
     return `
         <div class="edit-article-form">
             <div class="edit-article-form__top-row">
-                <h1 class="edit-article-form__title">Edit Article</h1>
+                <h1 class="edit-article-form__title">Edit Your Article</h1>
                 <button id="edit-article-form__close">Close Form</button>
             </div>
             <div class="edit-article-form__form">

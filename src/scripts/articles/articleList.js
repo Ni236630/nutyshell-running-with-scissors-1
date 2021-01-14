@@ -103,7 +103,7 @@ export const ArticleList = () => {
     <dialog id="editArticleFormDialog"></dialog>
     <div class="article-list__articles">
         ${relevantArticles
-            .sort((a, b) => a.timestamp.localeCompare(b.timestamp))
+            .sort((a, b) => b.timestamp.localeCompare(a.timestamp))
             .map(article => ArticleConverter(article)).join("")}
     </div>
     `;
