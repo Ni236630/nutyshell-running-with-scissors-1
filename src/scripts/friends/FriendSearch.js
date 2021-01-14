@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: provides users with affordance to search through list of all users and send a friend request
+
 import { useUsers } from '../users/userDataProvider.js';
 import { useFriends } from './friendDataProvider.js';
 import { SearchResult } from './SearchResult.js';

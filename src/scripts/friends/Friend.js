@@ -1,5 +1,6 @@
 // author: Aaron Resch
 // purpose: HTML representation of friend cards to be shown in FriendsList
+
 const eventHub = document.querySelector('.container');
 
 export const Friend = (userObject) => {

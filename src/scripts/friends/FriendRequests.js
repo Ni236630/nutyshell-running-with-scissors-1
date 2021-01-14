@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: handles friend request functionality, lists active friend requests and allows users to interact with them
+
 import { useUsers } from '../users/userDataProvider.js';
 import { saveFriend } from './friendDataProvider.js';
 import {

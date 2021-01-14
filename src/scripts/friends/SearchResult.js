@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: html representation of each user search result, including add friend button
+
 const eventHub = document.querySelector('.container');
 
 export const SearchResult = (user) => {

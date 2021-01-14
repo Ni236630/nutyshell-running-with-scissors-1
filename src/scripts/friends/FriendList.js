@@ -1,5 +1,6 @@
 // author: Aaron Resch
 // purpose: list Friend cards in dashboard, allow users to search for friends to add, allow users to delete friends
+
 import { useUsers } from '../users/userDataProvider.js';
 import { useFriends, saveFriend, deleteFriend } from './friendDataProvider.js';
 import { Friend } from './Friend.js';

@@ -1,3 +1,6 @@
+// author: Aaron Resch
+// purpose: data provider for interacting with the friendRequests join table on the API
+
 let friendRequests = [];
 
 const eventHub = document.querySelector('.container');
