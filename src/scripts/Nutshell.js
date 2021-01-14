@@ -98,3 +98,8 @@ eventHub.addEventListener(
 eventHub.addEventListener('friendsStateChanged', () => {
   document.querySelector('.friend-list').innerHTML = FriendList();
 });
+
+//Listen for state change of tasks
+eventHub.addEventListener('tasksStateChanged', () => {
+  document.querySelector('.task-list').innerHTML = taskList();
+});

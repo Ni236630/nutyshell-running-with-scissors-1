@@ -1,3 +1,8 @@
+// Component Author: Nicholas Douso
+// Purpose: maps over tasks to help create a list
+// dispatches ids for save/delete buttons
+
+
 /*  Imports for function use    */
 import {useTasks} from "./taskDataProvider.js";
 import { taskHTMLConverter } from "./TaskHTML.js";
