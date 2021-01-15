@@ -103,3 +103,8 @@
   position: absolute;
   transform: translateX(-12px);
 }
+
+.event-card__delete-container {
+  display: flex;
+  justify-content: space-around;
+}
