@@ -9,18 +9,19 @@
 
 .userArticle {
     margin-bottom: 1em;
-    background-color: lime;
-    border: solid black 2px;
-    border-radius: 5%;
-    box-shadow: 8px 8px 10px grey;  
+    background-color: var(--user-background-color);
+    border-radius: 7px;
+}
+
+.userArticle:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
 }
 
 .friendArticle {
     margin-bottom: 1em;
-    background-color: coral;
-    border: solid black 2px;
-    border-radius: 5%;
-    box-shadow: 8px 8px 10px grey; 
+    background-color: var(--friend-background-color);
+    border-radius: 7px;
 }
 
 .article__buttons {
@@ -59,6 +60,10 @@
 
 .article-list__empty{
     text-align: center;
+}
+
+.article__buttons button:hover {
+  filter: grayscale();
 }
 
 
