@@ -130,5 +130,5 @@ eventHub.addEventListener('friendsStateChanged', () => {
 //Listen for state change of tasks
 eventHub.addEventListener('tasksStateChanged', () => {
   document.querySelector('.task-list').innerHTML = `
-  <h2 class="text-center">TASKS</h2>${TaskList()}`;
+  <h2 class="text-center">TASKS</h2>${taskList()}`;
 });

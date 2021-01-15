@@ -8,6 +8,7 @@ import {useTasks} from "./taskDataProvider.js";
 import { taskHTMLConverter } from "./TaskHTML.js";
 import { taskDialog } from "./NewTaskForm.js";
 import "./deleteTask.js"
+import { taskComplete } from "./editTask.js"
 
 /*  variables for events and injection    */
 
@@ -77,3 +78,11 @@ export const taskList = () => {
         ${taskDialog()}
       </div>`
 }
+
+
+eventHub.addEventListener('change',  event =>{
+  const checkbox = document.getElementById('taskCheckbox');
+    if (checkbox.checked) {
+      return taskComplete()
+    } 
+});
