@@ -2,7 +2,7 @@
 // an event to be pressed and presents the user with a modal when it is
 
 // Imports
-import { editEvent } from './eventDataProvider.js';
+import { editEvent } from './eventProvider.js';
 
 // Selectors
 const eventHub = document.querySelector(".container");
@@ -10,27 +10,28 @@ const eventHub = document.querySelector(".container");
 // Variables
 let eventId = '';
 let oldName = '';
-let oldDate = '';
 let oldLocation = '';
 
 // When the user presses the edit icon in any event they saved, display the diglog box
 eventHub.addEventListener("editEvent", event => {
-    // Store the articleId to get the DOM element and also for saving the edit later
-    eventId = event.detail.eventId
+    // Store the eventId to get the DOM element and also for saving the edit later
+    eventId = event.detail.eventId[2];
+  
+    // Store the DOM element of the event to be edited
+    let oldEvent = document.getElementById(`event-card--${eventId}`);
     
-    // Store the DOM element of the article to be edited
-    let oldEvent = document.getElementById(`event-card--${articleId}`).childNodes;
-    console.log(oldEvent)
-    // Save the information from the old article
-    oldName = oldEvent[1].innerHTML;
-    oldDate = oldEvent[3].childNodes[0];
-    oldLocation = oldEvent[5].innerHTML;
-    
-    // Clear out the old article variable
+    // Save the information from the old event
+    const rawName = oldEvent.childNodes[1].innerHTML;
+    oldName = rawName.slice(7);
+
+    const rawLocation = oldEvent.childNodes[5].innerHTML;
+    oldLocation = rawLocation.slice(10);
+
+    // Clear out the old event variable
     oldEvent = '';
 
-    // When the user presses the "Edit Article button within an article that they saved, display a dialog box
-    //EditEventForm();
+    // When the user presses the "Edit Event button within an event that they saved, display a dialog box
+    EditEventForm();
 });
 
 // Targets the area in the DOM where the dialog box needs to be injected and then does so.
@@ -46,7 +47,6 @@ const EditEventForm = () => {
         contentTarget.close();
         eventId = '';
         oldName = '';
-        oldDate = '';
         oldLocation = '';
     });
 };
@@ -56,13 +56,13 @@ const render = () => {
     return `
     <div class="edit-event-form">
       <div class="edit-event-form__top-row">
-        <h1 class="edit-event-form__title text-center">Create a Edit Event</h1>
-        <button id="edit-event-form__close">Close Form</button>
+        <h1 class="edit-event-form__title text-center">Edit Your Event</h1>
+        <i class="btn fas fa-window-close fa-2x" id="edit-event-form__close"></i>
       </div>
       <div class="edit-event-form__form">
         <div class="edit-event-form__form-group">
           <label for="editEventDate">Date: </label>  
-          <input id="editEventDate" type="date" value="${oldDate}">
+          <input id="editEventDate" type="date">
         </div>
         <div class="edit-event-form__form-group">
           <label for="editEventName">Name: </label>  
@@ -80,32 +80,31 @@ const render = () => {
     `;
   };
 
-// When the user clicks the save button inside the dialog box, save the data inside as a new article. 
+// When the user clicks the save button inside the dialog box, save the data inside as a new event. 
 // If all fields are not filled out, display an alert
 eventHub.addEventListener('click', (e) => {
-  if (e.target.id === 'saveEditedEvent') {
+  if (e.target.id === 'saveEditEvent') {
     const contentTarget = document.getElementById('editEventFormDialog');
     let eventName = document.querySelector('#editEventName').value;
     let eventDate = document.querySelector('#editEventDate').value;
     let eventLocation = document.querySelector('#editEventLocation').value;
-    let articleUser = parseInt(sessionStorage.getItem('activeUser'));
+    let eventUser = parseInt(sessionStorage.getItem('activeUser'));
 
-    if (articleTitle && articleUrl && articleSynopsis !== '') {
-      const newArticle = {
-        id: articleId,
-        userId: articleUser,
-        title: articleTitle,
-        url: articleUrl,
-        synopsis: articleSynopsis,
-        timestamp: new Date()
+    if (eventName && eventDate && eventLocation !== '') {
+      const newEvent = {
+        id: eventId,
+        userId: eventUser,
+        name: eventName,
+        date: eventDate,
+        location: eventLocation,
       };
 
-      editArticle(newArticle);
-      articleId = '';
-      articleTitle = '';
-      articleUrl = '';
-      articleSynopsis = '';
-      articleUser = '';
+      editEvent(newEvent);
+      eventId = '';
+      eventName = '';
+      eventDate = '';
+      eventLocation = '';
+      eventUser = '';
       contentTarget.close();
     } else {
       window.alert('Please fill in all fields');

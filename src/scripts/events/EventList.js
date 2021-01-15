@@ -5,6 +5,7 @@ import { Event } from './Event.js';
 import { deleteEvent, getEvents, useEvents } from './eventProvider.js';
 import { useFriends } from '../friends/friendDataProvider.js';
 import { NewEventForm } from './NewEventForm.js';
+import './EditEventForm.js';
 
 const eventHub = document.querySelector('.container');
 
@@ -55,6 +56,7 @@ export const EventList = () => {
       ${render(allEvents)}
       </div>
       <dialog id="newEventFormDialog"></dialog>
+      <dialog id="editEventFormDialog"></dialog>
       `;
     } else {
       return `
@@ -65,6 +67,7 @@ export const EventList = () => {
       ${render(userEvents)}
       </div>
       <dialog id="newEventFormDialog"></dialog>
+      <dialog id="editEventFormDialog"></dialog>
       `;
     }
   } else {
@@ -76,6 +79,7 @@ export const EventList = () => {
     <h2>No events found.</h2>
     </div>
     <dialog id="newEventFormDialog"></dialog>
+    <dialog id="editEventFormDialog"></dialog>
     `;
   }
 };
@@ -93,11 +97,16 @@ const render = (events) => {
 };
 
 eventHub.addEventListener('click', (e) => {
-  if (e.target.id !== 'newEvent') {
-    return;
-  } else {
+  if (e.target.id === 'newEvent') {
     NewEventForm();
-  }
+  } else if (e.target.id.split("--")[0] === 'editEvent'){
+    const editEvent = new CustomEvent("editEvent", {
+      detail: {
+        eventId: e.target.id.split("--"[1])
+      }
+    });
+    eventHub.dispatchEvent(editEvent);
+  };
 });
 
 eventHub.addEventListener('deleteEventClicked', (e) => {
