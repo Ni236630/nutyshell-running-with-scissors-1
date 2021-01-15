@@ -38,7 +38,7 @@ const render = () => {
         <div class="new-article-form">
             <div class="new-article-form__top-row">
                 <h1 class="new-article-form__title">Create a New Article</h1>
-                <button id="new-article-form__close"><img src="../images/close-icon.png"></button>
+                <i class="btn fas fa-window-close fa-2x"id="new-article-form__close"></i>
             </div>
             <div class="new-article-form__form">
                 <div class="new-article-form__form-group">
