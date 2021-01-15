@@ -94,17 +94,30 @@ export const ArticleList = () => {
     let relevantArticles = [...userArticlesFinal, ...friendsArticlesFinal];
 
     // ---------------- HTML CONVERSION & TRANSMISSION ----------------
-    return `
-    <div class="article-list__top-row">
-        <h3 class="article-list__header">Article List</h3>
-        <div class="newArticleBtn-div"><button id="newArticle--${currentUser}" class="newArticleBtn">New Article</button></div>
-    </div>
-    <dialog id="newArticleFormDialog"></dialog>
-    <dialog id="editArticleFormDialog"></dialog>
-    <div class="article-list__articles">
-        ${relevantArticles
-            .sort((a, b) => b.timestamp.localeCompare(a.timestamp))
-            .map(article => ArticleConverter(article)).join("")}
-    </div>
-    `;
-};
+    if(relevantArticles.length > 0)
+    {
+        return `
+            <div class="article-list__top-row">
+                <h3 class="article-list__header">Article List</h3>
+                <div class="newArticleBtn-div"><button id="newArticle--${currentUser}" class="newArticleBtn"><img src="../images/add-icon.png"></button></div>
+            </div>
+            <dialog id="newArticleFormDialog"></dialog>
+            <dialog id="editArticleFormDialog"></dialog>
+            <div class="article-list__articles">
+                ${relevantArticles
+                    .sort((a, b) => b.timestamp.localeCompare(a.timestamp))
+                    .map(article => ArticleConverter(article)).join("")}
+            </div>
+        `;
+    }else{
+        return `
+            <div class="article-list__top-row">
+                <h3 class="article-list__header">Article List</h3>
+                <div class="newArticleBtn-div"><button id="newArticle--${currentUser}" class="newArticleBtn"><img src="../images/add-icon.png"></button></div>
+            </div>
+            <div class="article-list__empty">No articles to display!</div>
+            <dialog id="newArticleFormDialog"></dialog>
+        `
+    }
+}
+    

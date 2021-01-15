@@ -4,7 +4,6 @@
     border: 2px solid red;
     padding: 1em;
     overflow-y: scroll;
-    height: 250px;
 }
 
 .article-list__top-row {
@@ -17,7 +16,6 @@
     border: solid black 2px;
     border-radius: 5%;
     box-shadow: 8px 8px 10px grey;  
-    
 }
 
 .friendArticle {
@@ -34,13 +32,14 @@
     margin: 5px 0;
 }
 
-.article__buttons button{
+.newArticleBtn, .article__buttons button {
     border: none;
     background: none;
     cursor: pointer;
+    outline: none;
 }
 
-.article__buttons img{
+.article-list button img{
     pointer-events: none;
 }
 
@@ -57,8 +56,11 @@
 }
 
 .newArticleBtn-div {
-    margin-bottom: 10px;
-    margin-top: 5px;
+    margin: 5px 0px;
+    text-align: center;
+}
+
+.article-list__empty{
     text-align: center;
 }
 
@@ -122,4 +124,9 @@
   
   #new-article-form__close, #edit-article-form__close {
     align-self: flex-end;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 10px;
+    outline: none;
   }
