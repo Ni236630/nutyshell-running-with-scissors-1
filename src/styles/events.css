@@ -1,22 +1,40 @@
 .event-list {
-  border: 2px solid red;
   padding: 1em;
+  overflow-y: scroll;
 }
 
 .event-list__top-row {
   margin-bottom: 0.25em;
+  text-align: center;
 }
 
 .event-card{
   margin-bottom: 0.5em;
+  padding: 0.25em 0.5em 0.5em;
+  border-radius: 7px;
 }
 
 .userEvent {
-  background-color: lime;
+  background-color: var(--user-background-color);
+}
+
+.userEvent:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
 }
 
 .friendEvent {
-  background-color: coral;
+  background-color: var(--friend-background-color);
+}
+
+.friendEvent:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
+}
+
+.nextEvent {
+  font-weight: bold;
+  background-color: #6fe95f;
 }
 
 #newEventFormDialog {

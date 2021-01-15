@@ -84,7 +84,6 @@ export const messageList = () => {
     
     // Return the full chat message DOM element with all needed data plugged in
     return `
-    <h1>MESSAGE LIST</h1>
     <div class="chatMessages" id="chatMessages">
         <div class="chatMsg">${convertedToStrings}</div>
     </div>

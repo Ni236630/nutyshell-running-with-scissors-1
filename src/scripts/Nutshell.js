@@ -61,32 +61,35 @@ const render = () => {
     <article class="top-row">
       ${CurrentUser()}
       <div class="top-row__current-weather">
-        <h1>CURRENT WEATHER</h1>  
+        <h4>CURRENT WEATHER</h4>  
       </div>
       <div class="top-row__logout-button"><button id="logout">Log Out</button></div>
     </article>
     <main>
       <aside class="friend-list">
+      <h2 class="text-center">FRIENDS</h2>
         ${FriendList()}
       </aside>
       <div class="nutshell-main-view">
         <article>
           <section class="event-list">
+          <h2 class="text-center">EVENTS</h2>
             ${EventList()}
           </section>
-          <section class="message-list">
-            ${messageList()}
-          </section>
+          <section class="article-list">
+          <h2 class="text-center">ARTICLES</h2>
+          ${ArticleList()}   
+        </section>
         </article>
         <article>
+        <section class="message-list">
+        <h2 class="text-center">MESSAGES</h2>
+          ${messageList()}
+        </section>
           <section class="task-list">
-            <h1>TASK LIST</h1>
-            <!-- TaskList() --> 
+            <h2 class="text-center">TASKS</h2>
             ${taskList()}   
-          </section>
-          <section class="article-list">
-            ${ArticleList()}   
-          </section>
+            </section>
         </article>
       </div>
     </main>
@@ -94,12 +97,13 @@ const render = () => {
 };
 
 eventHub.addEventListener('eventsStateChanged', () => {
-  document.querySelector('.event-list').innerHTML = EventList();
+  document.querySelector('.event-list').innerHTML = `
+  <h2 class="text-center">EVENTS</h2>${EventList()}`;
 });
 // Listen for a state change in articles
-eventHub.addEventListener(
-  'articlesStateChanged',
-  () => (document.querySelector('.article-list').innerHTML = ArticleList())
+eventHub.addEventListener("articlesStateChanged", () => 
+  document.querySelector('.article-list').innerHTML = `
+  <h2 class="text-center">ARTICLES</h2>${ArticleList()}`
 );
 
 // Listen for a state change in messages
@@ -110,7 +114,8 @@ eventHub.addEventListener('messagesStateChanged', () => {
     .then(getUserMessages)
     .then(() => {
       // Rend to the DOM
-      document.querySelector('.message-list').innerHTML = messageList();
+      document.querySelector('.message-list').innerHTML = `
+      <h2 class="text-center">MESSAGES</h2>${messageList()}`
       // Define the chat area
       let chatBox = document.getElementById('chatMessages');
       // Keep the chat area scrolled to the bottom to show most recent messages only
@@ -118,10 +123,12 @@ eventHub.addEventListener('messagesStateChanged', () => {
     });
 });
 eventHub.addEventListener('friendsStateChanged', () => {
-  document.querySelector('.friend-list').innerHTML = FriendList();
+  document.querySelector('.friend-list').innerHTML = `
+  <h2 class="text-center">FRIENDS</h2>${FriendList()}`;
 });
 
 //Listen for state change of tasks
 eventHub.addEventListener('tasksStateChanged', () => {
-  document.querySelector('.task-list').innerHTML = taskList();
+  document.querySelector('.task-list').innerHTML = `
+  <h2 class="text-center">TASKS</h2>${TaskList()}`;
 });

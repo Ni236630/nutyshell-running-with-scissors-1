@@ -3,12 +3,62 @@
 @import url('./task.css');
 @import url('./messages.css');
 @import url('./friends.css');
+@import url('./auth.css');
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
 
+:root {
+  --heading-font: 'Yusei Magic', sans-serif;
+  --primary-font: 'Lato', sans-serif;
+  --background-color: #345675;
+  --user-background-color: #ecae5c;
+  --friend-background-color: #fff8dc;
+  --alt-background-color: #dbedf3;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--primary-font);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading-font);
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+button {
+  padding: 3px 4px;
+  z-index: 99999;
+}
+
+i {
+  cursor: pointer;
+}
+
+.btn {
+  color: black;
+}
+
+.btn:hover {
+  color: #333333;
 }
 
 .dashboard {
@@ -17,7 +67,7 @@
 
 .container {
   padding: 1em;
-  height: 100vh;
+  height: 95vh;
 }
 
 main {
@@ -45,22 +95,53 @@ main {
   height: 100%;
 }
 
-.event-list, .message-list, .task-list, .article-list {
-  width: 50%;
-  height: 445px;
+.event-list,
+.message-list,
+.task-list,
+.article-list {
+  width: 48%;
+  height: 98%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  margin: 0.25em;
+}
+
+.task-list,
+.message-list {
+  border-radius: 7px;
+  border: 3px solid cornsilk;
+}
+
+.event-list::-webkit-scrollbar,
+.message-list::-webkit-scrollbar,
+.task-list::-webkit-scrollbar,
+.article-list::-webkit-scrollbar {
+  display: none;
 }
 
 .top-row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
-  margin: 1em;
+  margin: 0 1em 1em;
+}
+
+.top-row__current-user {
+  color: #ffffff;
 }
 
 .text-center {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .isHidden {
   display: none;
+}
+
+.text-white {
+  color: #ffffff;
 }

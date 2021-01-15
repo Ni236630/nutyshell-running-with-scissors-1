@@ -10,14 +10,16 @@ export const Event = (eventObject) => {
 
   const thisEventUser = users.find((u) => u.id === eventObject.userId);
 
-  if (eventObject.class === 'userEvent') {
+  if (eventObject.class === 'userEvent' || eventObject.class === 'userEvent nextEvent') {
     return `
       <div class="event-card ${eventObject.class}" id="event-card--${eventObject.id}">
         <div class="event-card__name">Event: ${eventObject.name}</div>
         <div class="event-card__organizer">Organizer: ${thisEventUser.username}</div>
         <div class="event-card__location">Location: ${eventObject.location}</div>
         <div class="event-card__date">Date: ${eventObject.date}</div>
-        <button id="deleteEvent--${eventObject.id}">Delete Event</button>
+        <div class="event-card__delete-container text-center">
+          <i id="deleteEvent--${eventObject.id}" class="fas btn fa-trash-alt fa-2x"></i>
+        </div>
       </div> 
     `;
   } else {

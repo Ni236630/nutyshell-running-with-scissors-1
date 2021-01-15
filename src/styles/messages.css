@@ -1,6 +1,6 @@
-.message-list {   
-    border: 2px solid red;
-    padding: 1em;
+.message-list {
+  padding: 1em;
+  overflow-y: scroll;
 }
 
 .chatMessages {
@@ -25,4 +25,7 @@
     border: none;
     background: transparent;
     color: white;
+
+.enterMessages label {
+    color: #ffffff;
 }

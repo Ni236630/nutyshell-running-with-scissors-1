@@ -98,8 +98,7 @@ export const ArticleList = () => {
     {
         return `
             <div class="article-list__top-row">
-                <h3 class="article-list__header">Article List</h3>
-                <div class="newArticleBtn-div"><button id="newArticle--${currentUser}" class="newArticleBtn"><img src="../images/add-icon.png"></button></div>
+                <div class="newArticleBtn-div"><i id="newArticle--${currentUser}" class="newArticleBtn btn fas fa-plus-circle fa-2x"></i></div>
             </div>
             <dialog id="newArticleFormDialog"></dialog>
             <dialog id="editArticleFormDialog"></dialog>
@@ -112,8 +111,7 @@ export const ArticleList = () => {
     }else{
         return `
             <div class="article-list__top-row">
-                <h3 class="article-list__header">Article List</h3>
-                <div class="newArticleBtn-div"><button id="newArticle--${currentUser}" class="newArticleBtn"><img src="../images/add-icon.png"></button></div>
+                <div class="newArticleBtn-div"><i id="newArticle--${currentUser}" class="newArticleBtn fas fa-plus-circle fa-2x"</i></div>
             </div>
             <div class="article-list__empty">No articles to display!</div>
             <dialog id="newArticleFormDialog"></dialog>
