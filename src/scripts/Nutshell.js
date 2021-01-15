@@ -94,11 +94,13 @@ const render = () => {
 };
 
 eventHub.addEventListener('eventsStateChanged', () => {
-  document.querySelector('.event-list').innerHTML = EventList();
+  document.querySelector('.event-list').innerHTML = `
+  <h2 class="text-center">EVENTS</h2>${EventList()}`;
 });
 // Listen for a state change in articles
 eventHub.addEventListener("articlesStateChanged", () => 
-  document.querySelector('.article-list').innerHTML = ArticleList()
+  document.querySelector('.article-list').innerHTML = `
+  <h2 class="text-center">ARTICLES</h2>${ArticleList()}`
 );
 
 // Listen for a state change in messages
@@ -109,7 +111,8 @@ eventHub.addEventListener("messagesStateChanged", () => {
     .then(getUserMessages)
     .then(() => {
       // Rend to the DOM
-      document.querySelector('.message-list').innerHTML = messageList()
+      document.querySelector('.message-list').innerHTML = `
+      <h2 class="text-center">MESSAGES</h2>${MessageList()}`
       // Define the chat area
       let chatBox = document.getElementById("chatMessages")
       // Keep the chat area scrolled to the bottom to show most recent messages only
@@ -117,10 +120,12 @@ eventHub.addEventListener("messagesStateChanged", () => {
     })
 });
 eventHub.addEventListener('friendsStateChanged', () => {
-  document.querySelector('.friend-list').innerHTML = FriendList();
+  document.querySelector('.friend-list').innerHTML = `
+  <h2 class="text-center">FRIENDS</h2>${FriendList()}`;
 });
 
 //Listen for state change of tasks
 eventHub.addEventListener('tasksStateChanged', () => {
-  document.querySelector('.task-list').innerHTML = taskList();
+  document.querySelector('.task-list').innerHTML = `
+  <h2 class="text-center">TASKS</h2>${TaskList()}`;
 });

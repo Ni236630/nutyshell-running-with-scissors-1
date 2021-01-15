@@ -43,6 +43,10 @@ h2 {
   font-size: 24px;
 }
 
+button {
+  padding: 3px 4px;
+}
+
 .dashboard {
   height: 95%;
 }

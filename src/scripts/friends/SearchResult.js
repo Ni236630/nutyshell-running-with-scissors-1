@@ -6,11 +6,11 @@ const eventHub = document.querySelector('.container');
 export const SearchResult = (user) => {
   return `
   <div class="search-result">
-    <div class="friend-card__info">
+    <div class="friend-card__info text-center">
       <p><strong>Username: </strong>${user.username}</p>
       <p><strong>Email: </strong>${user.email}</p>
     </div>
-    <div class="friend-card__button-container">
+    <div class="friend-card__button-container text-center">
       <button id="addFriend--${user.id}">Send Friend Request</button>
     </div>
   </div>

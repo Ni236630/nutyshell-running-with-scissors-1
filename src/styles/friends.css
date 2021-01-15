@@ -7,10 +7,36 @@
   border-radius: 7px;
 }
 
-.friend-list__content h3 {
+.friend-list__content h3,
+.friend-list__content h2 {
   color: #000000;
 }
 
 .friend-list__content > div {
   margin-bottom: 1em;
+}
+
+.friend-request {
+  border-bottom: 2px solid black;
+}
+
+.friend-request__buttons {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-result {
+  margin-bottom: 5px;
+  border-bottom: 2px dotted black;
+  padding-bottom: 5px;
+}
+
+.friend-card {
+  border-top: 2px solid black;
+  padding-bottom: 5px;
+}
+
+.friend-card__button-container {
+  margin-top: 3px;
 }
