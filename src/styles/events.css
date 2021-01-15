@@ -35,6 +35,7 @@
 .nextEvent {
   font-weight: bold;
   background-color: #6fe95f;
+  transform: scale(1.0125,1.0125);
 }
 
 #newEventFormDialog {
