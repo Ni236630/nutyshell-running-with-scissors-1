@@ -8,6 +8,7 @@ import {useTasks} from "./taskDataProvider.js";
 import { taskHTMLConverter } from "./TaskHTML.js";
 import { taskDialog } from "./NewTaskForm.js";
 import "./deleteTask.js"
+import { taskComplete } from "./editTask.js"
 
 /*  variables for events and injection    */
 
@@ -41,8 +42,7 @@ eventHub.addEventListener("click", customEvent => {
   return eventHub.dispatchEvent(deleteEvent)
     }
   })
-
-/*  initial list of tasks   */
+ 
 
 export const taskList = () => {
   
@@ -53,7 +53,7 @@ export const taskList = () => {
         <div class="task__container">
         <button id="addTask">Add New Task</button>
          <ul>${tasks.map((task)=>{
-          if(task.userId === activeUserId){
+          if(task.userId === activeUserId && task.isComplete === "false"){
             
              return  taskHTMLConverter(task)
           }
@@ -62,3 +62,19 @@ export const taskList = () => {
         ${taskDialog()}
       </div>`
 }
+
+
+/*    Event for completing tasks      */
+
+eventHub.addEventListener('change',  event =>{
+  if(event.target.id.startsWith("taskCheckbox--")){
+    const [prefix, taskId] = event.target.id.split("--")
+    const checkbox = document.querySelector(".task__card");
+    if (!checkbox.checked && event.target.id.includes(taskId)) {
+      return taskComplete()
+    } else {
+     
+      return 
+    }}
+});
+

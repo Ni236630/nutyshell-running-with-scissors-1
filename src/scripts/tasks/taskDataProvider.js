@@ -45,6 +45,18 @@ export const getTasks = () => {
 Task Modification Functions
 
 */
+export const editTask = task => {
+  return  fetch(`http://localhost:8088/tasks/${task.id}`,{
+    method: "PUT",
+    headers: {
+      "Content-Type":
+      "application/json",
+    },
+    body: JSON.stringify(task)
+  })
+  .then(getTasks)
+  .then(dispatchStateChangeEvent)
+}
 
 export const saveTask = (task) => {
   return fetch("http://localhost:8088/tasks",{
