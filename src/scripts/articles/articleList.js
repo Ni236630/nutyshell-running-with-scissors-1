@@ -97,7 +97,7 @@ export const ArticleList = () => {
     return `
     <div class="article-list__top-row">
         <h3 class="article-list__header">Article List</h3>
-        <button id="newArticle--${currentUser}" class="newArticleBtn">New Article</button>
+        <div class="newArticleBtn-div"><button id="newArticle--${currentUser}" class="newArticleBtn">New Article</button></div>
     </div>
     <dialog id="newArticleFormDialog"></dialog>
     <dialog id="editArticleFormDialog"></dialog>

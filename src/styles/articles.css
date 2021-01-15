@@ -12,20 +12,36 @@
 }
 
 .userArticle {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     background-color: lime;
-    border: solid black 1px;
+    border: solid black 2px;
+    border-radius: 5%;
+    box-shadow: 8px 8px 10px grey;  
+    
 }
 
 .friendArticle {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
     background-color: coral;
-    border: solid black 1px;
+    border: solid black 2px;
+    border-radius: 5%;
+    box-shadow: 8px 8px 10px grey; 
 }
 
 .article__buttons {
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin: 5px 0;
+}
+
+.article__buttons button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.article__buttons img{
+    pointer-events: none;
 }
 
 .article__title, .article__url, .article__synopsis, .article__timestamp, .article__friend{
@@ -40,8 +56,10 @@
     text-align: center;
 }
 
-.newArticleBtn {
+.newArticleBtn-div {
     margin-bottom: 10px;
+    margin-top: 5px;
+    text-align: center;
 }
 
 
