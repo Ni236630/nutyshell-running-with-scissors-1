@@ -101,15 +101,9 @@ eventHub.addEventListener('eventsStateChanged', () => {
   <h2 class="text-center">EVENTS</h2>${EventList()}`;
 });
 // Listen for a state change in articles
-<<<<<<< HEAD
 eventHub.addEventListener("articlesStateChanged", () => 
   document.querySelector('.article-list').innerHTML = `
   <h2 class="text-center">ARTICLES</h2>${ArticleList()}`
-=======
-eventHub.addEventListener(
-  'articlesStateChanged',
-  () => (document.querySelector('.article-list').innerHTML = ArticleList())
->>>>>>> main
 );
 
 // Listen for a state change in messages
@@ -120,12 +114,8 @@ eventHub.addEventListener('messagesStateChanged', () => {
     .then(getUserMessages)
     .then(() => {
       // Rend to the DOM
-<<<<<<< HEAD
       document.querySelector('.message-list').innerHTML = `
       <h2 class="text-center">MESSAGES</h2>${MessageList()}`
-=======
-      document.querySelector('.message-list').innerHTML = messageList();
->>>>>>> main
       // Define the chat area
       let chatBox = document.getElementById('chatMessages');
       // Keep the chat area scrolled to the bottom to show most recent messages only
