@@ -18,6 +18,7 @@ export const Event = (eventObject) => {
         <div class="event-card__location">Location: ${eventObject.location}</div>
         <div class="event-card__date">Date: ${eventObject.date}</div>
         <div class="event-card__delete-container text-center">
+          <i id="editEvent--${eventObject.id}" class="fas btn fa-edit fa-2x"></i>
           <i id="deleteEvent--${eventObject.id}" class="fas btn fa-trash-alt fa-2x"></i>
         </div>
       </div> 

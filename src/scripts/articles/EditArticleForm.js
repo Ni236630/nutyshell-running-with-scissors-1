@@ -13,7 +13,7 @@ let oldTitle = '';
 let oldUrl = '';
 let oldSynopsis = '';
 
-// When the user presses the "New Article button at the top of the articles list, display the diglog box
+// When the user presses the edit icon in any article they saved, display the diglog box
 eventHub.addEventListener("editArticle", event => {
     // Store the articleId to get the DOM element and also for saving the edit later
     articleId = event.detail.articleId
@@ -57,7 +57,7 @@ const render = () => {
         <div class="edit-article-form">
             <div class="edit-article-form__top-row">
                 <h1 class="edit-article-form__title">Edit Your Article</h1>
-                <button id="edit-article-form__close"><img src="../images/close-icon.png"></button>
+                <i class="btn fas fa-window-close fa-2x"id="edit-article-form__close"></i>
             </div>
             <div class="edit-article-form__form">
                 <div class="edit-article-form__form-group">
