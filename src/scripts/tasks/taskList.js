@@ -69,7 +69,7 @@ export const taskList = () => {
         <div class="task__container">
         <button id="addTask">Add New Task</button>
          <ul>${tasks.map((task)=>{
-          if(task.userId === activeUserId){
+          if(task.userId === activeUserId && task.isComplete === "false"){
             
              return  taskHTMLConverter(task)
           }
@@ -83,9 +83,9 @@ export const taskList = () => {
 eventHub.addEventListener('change',  event =>{
   const checkbox = document.getElementById('taskCheckbox');
     if (!checkbox.checked) {
-      return console.log("i'm true!")
+      return console.log("i am false")
     } else {
-     
+      console.log("my value is not checked")
       return taskComplete()
     }
 });
