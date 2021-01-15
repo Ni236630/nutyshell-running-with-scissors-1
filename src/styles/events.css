@@ -41,20 +41,21 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: #aaaaaaaa;
+  background-color: #000000dd;
 }
 
 .new-event-form {
-  background-color: #ffffff;
+  background-color: #70b1e6;
   position: relative;
   top: 25%;
-  max-width: 70%;
+  max-width: 50%;
   margin: 0 auto;
+  border-radius: 7px;
+  padding: 16px 0;
 }
 
 .new-event-form__title {
-  padding-top: 1em;
-  /* border: 2px solid red; */
+  color: #000;
 }
 
 .new-event-form__top-row {
@@ -83,11 +84,17 @@
   margin-bottom: 0.25em;
 }
 
+.new-event-form__form-group input {
+  padding: 0 3px;
+}
+
 #saveNewEvent {
   width: 130px;
   margin: 0.25em auto 0;
 }
 
 #new-event-form__close {
-  align-self: flex-end;
+  position: absolute;
+  transform: translateX(-12px);
+  outline: none;
 }
