@@ -1,8 +1,14 @@
-.task-list{
+.task-container{
   padding: 1em;
   overflow-y: scroll;
+  display: flex;
 }
 
 .task__container{
- margin-left: 10px;
+ margin-left: auto;
+}
+
+li {
+  background-color: #6fe95f;
+  margin:auto; 
 }
