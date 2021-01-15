@@ -101,7 +101,6 @@ eventHub.addEventListener("click", clickEvent => {
         
         // Entry or Delete
         let buttonName = matchingButton[1]
-        console.log(buttonName)
 
         // ID of the message to be used if a user wants to delete
         let messageId = matchingButton[2]
