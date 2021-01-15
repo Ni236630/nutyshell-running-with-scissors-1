@@ -76,20 +76,20 @@ const render = () => {
           <h2 class="text-center">EVENTS</h2>
             ${EventList()}
           </section>
-          <section class="message-list">
-          <h2 class="text-center">MESSAGES</h2>
-            ${messageList()}
-          </section>
+          <section class="article-list">
+          <h2 class="text-center">ARTICLES</h2>
+          ${ArticleList()}   
+        </section>
         </article>
         <article>
+        <section class="message-list">
+        <h2 class="text-center">MESSAGES</h2>
+          ${messageList()}
+        </section>
           <section class="task-list">
             <h2 class="text-center">TASKS</h2>
             ${taskList()}   
             </section>
-            <section class="article-list">
-            <h2 class="text-center">ARTICLES</h2>
-            ${ArticleList()}   
-          </section>
         </article>
       </div>
     </main>

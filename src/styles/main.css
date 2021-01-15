@@ -77,10 +77,6 @@ main {
   height: 100%;
 }
 
-.friend-list {
-  /* border: 2px solid black; */
-}
-
 .friend-list__content {
   height: 100%;
 }
@@ -94,6 +90,11 @@ main {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   margin: 0.25em;
+}
+
+.task-list, .message-list {
+  border-radius: 7px;
+  border: 3px solid cornsilk;
 }
 
 .event-list::-webkit-scrollbar,
