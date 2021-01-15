@@ -134,6 +134,14 @@ main {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .isHidden {
   display: none;
+}
+
+.text-white {
+  color: #ffffff;
 }
