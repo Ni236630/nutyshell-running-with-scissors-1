@@ -8,9 +8,9 @@
 }
 
 .userArticle {
-    margin-bottom: 1em;
-    background-color: var(--user-background-color);
-    border-radius: 7px;
+  margin-bottom: 1em;
+  background-color: var(--user-background-color);
+  border-radius: 7px;
 }
 
 .userArticle:hover {
@@ -19,9 +19,9 @@
 }
 
 .friendArticle {
-    margin-bottom: 1em;
-    background-color: var(--friend-background-color);
-    border-radius: 7px;
+  margin-bottom: 1em;
+  background-color: var(--friend-background-color);
+  border-radius: 7px;
 }
 
 .friendArticle:hover {
@@ -30,13 +30,17 @@
 }
 
 .article__buttons {
-    display:flex;
-    justify-content: space-around;
-    margin: 5px 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 5px 0;
 }
 
-.article__title, .article__url, .article__synopsis, .article__timestamp, .article__friend{
-    padding: 5px;
+.article__title,
+.article__url,
+.article__synopsis,
+.article__timestamp,
+.article__friend {
+  padding: 5px;
 }
 
 .article__title {
@@ -44,85 +48,97 @@
 }
 
 .article-list__header {
-    text-align: center;
+  text-align: center;
 }
 
 .newArticleBtn-div {
-    margin: 5px 0px;
-    text-align: center;
+  margin: 5px 0px;
+  text-align: center;
 }
 
-.article-list__empty{
-    text-align: center;
+.article-list__empty {
+  text-align: center;
 }
 
 .article-card {
   padding: 0.5em;
 }
 
-
 /* -------------------------- */
 /* Article Dialog Boxes Below */
 /* -------------------------- */
 
+#newArticleFormDialog,
+#editArticleFormDialog {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000000dd;
+}
 
-#newArticleFormDialog, #editArticleFormDialog {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: #aaaaaaaa;
-  }
-  
-  .new-article-form, .edit-article-form {
-    background-color: #ffffff;
-    position: relative;
-    top: 25%;
-    max-width: 70%;
-    margin: 0 auto;
-  }
-  
-  .new-article-form__title, .edit-article-form__title {
-    padding-top: 1em;
-    /* border: 2px solid red; */
-  }
-  
-  .new-article-form__top-row, .edit-article-form__top-row {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .new-article-form__top-row h1, .edit-article-form__top-row h1 {
-    font-size: 36px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .new-article-form__form, .edit-article-form__form {
-    /* border: 2px solid red; */
-    margin-top: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .new-article-form__form-group, .edit-article-form__form-group {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    /* max-width: 50%; */
-    margin-bottom: 0.25em;
-  }
-  
-  #saveNewArticle, #editNewArticle {
-    width: 130px;
-    margin: 0.25em auto 0;
-  }
-  
-  #new-article-form__close, #edit-article-form__close {
-    align-self: flex-end;
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin-right: 10px;
-    outline: none;
-  }
+.new-article-form,
+.edit-article-form {
+  background-color: #70b1e6;
+  position: relative;
+  top: 25%;
+  max-width: 50%;
+  margin: 0 auto;
+  border-radius: 7px;
+  padding: 16px 0;
+}
+
+.new-article-form__title,
+.edit-article-form__title {
+  color: #000000;
+}
+
+.new-article-form__top-row,
+.edit-article-form__top-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.new-article-form__top-row h1,
+.edit-article-form__top-row h1 {
+  font-size: 36px;
+  width: 100%;
+  text-align: center;
+}
+
+.new-article-form__form,
+.edit-article-form__form {
+  /* border: 2px solid red; */
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-article-form__form-group,
+.edit-article-form__form-group {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  /* max-width: 50%; */
+  margin-bottom: 0.25em;
+}
+
+.new-article-form__form-group input,
+.edit-article-form__form-group input,
+.new-article-form__form-group textarea,
+.edit-article-form__form-group textarea {
+  padding: 0 3px;
+}
+
+#saveNewArticle,
+#editNewArticle {
+  width: 130px;
+  margin: 0.25em auto 0;
+}
+
+#new-article-form__close,
+#edit-article-form__close {
+  position: absolute;
+  transform: translateX(-12px);
+  outline: none;
+}
