@@ -5,7 +5,7 @@
 
 .chatMessages {
     overflow-y: scroll;
-    height: 150px;
+    height: 350px;
 }
 
 .chatMsg--private {
@@ -19,4 +19,10 @@
 
 .userTag {
     color: red;
+}
+
+.chatEdit {
+    border: none;
+    background: transparent;
+    color: white;
 }
