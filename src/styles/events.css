@@ -35,6 +35,7 @@
 .nextEvent {
   font-weight: bold;
   background-color: #6fe95f;
+  transform: scale(1.0125,1.0125);
 }
 
 #newEventFormDialog, #editEventFormDialog {
@@ -101,4 +102,9 @@
 #edit-event-form__close {
   position: absolute;
   transform: translateX(-12px);
+}
+
+.event-card__delete-container {
+  display: flex;
+  justify-content: space-around;
 }
