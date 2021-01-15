@@ -73,14 +73,15 @@ eventHub.addEventListener('acceptedRequest', (e) => {
     userId: thisRequestObject.senderId,
     friendId: activeUserId,
   };
-
-  saveFriend(newFriendObject1);
-  saveFriend(newFriendObject2);
-
   thisRequestObject.isAccepted = true;
-  editFriendRequest(thisRequestObject);
-  eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
-  eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
+
+  saveFriend(newFriendObject1).then(() => {
+    saveFriend(newFriendObject2).then(() => {
+      editFriendRequest(thisRequestObject);
+      eventHub.dispatchEvent(new CustomEvent('eventsStateChanged'));
+      eventHub.dispatchEvent(new CustomEvent('articlesStateChanged'));
+    });
+  });
 });
 
 eventHub.addEventListener('click', (e) => {
