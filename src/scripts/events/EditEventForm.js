@@ -79,15 +79,15 @@ const render = () => {
     </div>
     `;
   };
-// STOPPED HERE
+
 // When the user clicks the save button inside the dialog box, save the data inside as a new article. 
 // If all fields are not filled out, display an alert
 eventHub.addEventListener('click', (e) => {
   if (e.target.id === 'saveEditedEvent') {
-    const contentTarget = document.getElementById('editArticleFormDialog');
-    let articleTitle = document.querySelector('#editArticleTitle').value;
-    let articleUrl = document.querySelector('#editArticleUrl').value;
-    let articleSynopsis = document.querySelector('#editArticleSynopsis').value;
+    const contentTarget = document.getElementById('editEventFormDialog');
+    let eventName = document.querySelector('#editEventName').value;
+    let eventDate = document.querySelector('#editEventDate').value;
+    let eventLocation = document.querySelector('#editEventLocation').value;
     let articleUser = parseInt(sessionStorage.getItem('activeUser'));
 
     if (articleTitle && articleUrl && articleSynopsis !== '') {
