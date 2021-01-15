@@ -81,11 +81,14 @@ export const taskList = () => {
 
 
 eventHub.addEventListener('change',  event =>{
-  const checkbox = document.getElementById('taskCheckbox');
-    if (!checkbox.checked) {
-      return console.log("i am false")
-    } else {
-      console.log("my value is not checked")
+  if(event.target.id.startsWith("taskCheckbox--")){
+    const [prefix, taskId] = event.target.id.split("--")
+    const checkbox = document.querySelector(".task__card");
+    if (!checkbox.checked && event.target.id.includes(taskId)) {
       return taskComplete()
-    }
+    } else {
+     
+      return 
+    }}
 });
+
