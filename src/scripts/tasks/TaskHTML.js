@@ -14,8 +14,8 @@ HTML of a single task
   return `
      <li>
       <div class="task__card">
-        <label for="taskLabel--${taskObject.id}" id="taskName">${taskObject.name}</label> <input type="checkbox" id="taskCheckbox" name="completeTask" value="false"> 
-        <div id="taskDate" value = ${taskObject.completionDate}>complete by: ${taskObject.completionDate}<div> <button id="deleteTask" value="${taskObject.id}">delete</button>
+        <label for="taskLabel--${taskObject.id}" id="taskCardName">${taskObject.name}</label> <input type="checkbox" id="taskCheckbox" name="completeTask" value="false"> 
+        <div class="taskDate" id=${taskObject.completionDate}>complete by: ${taskObject.completionDate}<div> <button id="deleteTask" value="${taskObject.id}">delete</button>
      </div>
     </li>
   `

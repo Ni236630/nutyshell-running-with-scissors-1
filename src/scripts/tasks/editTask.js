@@ -4,8 +4,8 @@ const eventHub = document.querySelector(".container")
 
  export const taskComplete = ()=>{
   const id = parseInt(document.getElementById("deleteTask").value)
-  const name = document.getElementById("taskName").innerHTML.innerHTML;
-  const completionDate = document.getElementById("taskDate").innerHTML.value;
+  const name = document.getElementById("taskCardName").innerHTML;
+  const completionDate = document.querySelector(".taskDate").id;
   const userId = parseInt(sessionStorage.getItem('activeUser'))
   const isComplete = "true"
   

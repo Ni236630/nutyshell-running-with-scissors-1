@@ -45,18 +45,18 @@ eventHub.addEventListener("click", customEvent => {
   
   //dispatch event for checkbox!
   
- eventHub.addEventListener("checkbox", customEvent => {
-   const button = customEvent.target.id.split("--")[0]
-   const buttonId = customEvent.target.id.split("--")[1]
-   if(button ==="taskBox"){
-     const makeComplete = new CustomEvent("checkTaskOff",{
-       detail: {
-         taskId: buttonId
-       }
-     })
-     eventHub.dispatchEvent(makeComplete)
-   }
- }) 
+//  eventHub.addEventListener("checkbox", customEvent => {
+//    const button = customEvent.target.id.split("--")[0]
+//    const buttonId = customEvent.target.id.split("--")[1]
+//    if(button ==="taskBox"){
+//      const makeComplete = new CustomEvent("checkTaskOff",{
+//        detail: {
+//          taskId: buttonId
+//        }
+//      })
+//      eventHub.dispatchEvent(makeComplete)
+//    }
+//  }) 
 
 /*  initial list of tasks   */
 
@@ -82,7 +82,10 @@ export const taskList = () => {
 
 eventHub.addEventListener('change',  event =>{
   const checkbox = document.getElementById('taskCheckbox');
-    if (checkbox.checked) {
+    if (!checkbox.checked) {
+      return console.log("i'm true!")
+    } else {
+     
       return taskComplete()
-    } 
+    }
 });
