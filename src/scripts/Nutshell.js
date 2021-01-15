@@ -60,7 +60,7 @@ const render = () => {
   contentTarget.innerHTML = `
     <article class="top-row">
       ${CurrentUser()}
-      <div class="top-row__current-weather">
+      <div class="top-row__current-weather text-center text-white">
         <h4>CURRENT WEATHER</h4>  
       </div>
       <div class="top-row__logout-button"><button id="logout">Log Out</button></div>

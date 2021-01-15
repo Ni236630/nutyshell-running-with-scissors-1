@@ -53,7 +53,9 @@ eventHub.addEventListener("newTaskClicked", customEvent =>{
     taskDialogText.innerHTML = `
       <div id="taskDialog">
         <form class="addingTask" action="">
+
           <fieldset class="taskForm">
+          <h1 class="edit-event-form__title text-center">Add A Task</h1>
           <label for="taskName">Task Name:<label>
           <input class="taskNameInput" type"text" name="taskName" id="taskName">
           <label for="completionDate">Due Date:<label>
