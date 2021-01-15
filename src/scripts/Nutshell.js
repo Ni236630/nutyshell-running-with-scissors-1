@@ -115,7 +115,7 @@ eventHub.addEventListener('messagesStateChanged', () => {
     .then(() => {
       // Rend to the DOM
       document.querySelector('.message-list').innerHTML = `
-      <h2 class="text-center">MESSAGES</h2>${MessageList()}`
+      <h2 class="text-center">MESSAGES</h2>${messageList()}`
       // Define the chat area
       let chatBox = document.getElementById('chatMessages');
       // Keep the chat area scrolled to the bottom to show most recent messages only
