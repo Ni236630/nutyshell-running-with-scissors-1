@@ -17,8 +17,23 @@
   background-color: var(--user-background-color);
 }
 
+.userEvent:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
+}
+
 .friendEvent {
   background-color: var(--friend-background-color);
+}
+
+.friendEvent:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
+}
+
+.nextEvent {
+  font-weight: bold;
+  background-color: #6fe95f;
 }
 
 #newEventFormDialog {

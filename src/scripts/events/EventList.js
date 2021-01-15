@@ -83,7 +83,12 @@ export const EventList = () => {
 const render = (events) => {
   return events
     .sort((a, b) => a.date.localeCompare(b.date))
-    .map((e) => Event(e))
+    .map((e, i) => {
+      if (i === 0) {
+        e.class = e.class + ' nextEvent';
+        return Event(e);
+      } else return Event(e);
+    })
     .join('');
 };
 

@@ -62,10 +62,6 @@
     text-align: center;
 }
 
-.article__buttons button:hover {
-  filter: grayscale();
-}
-
 
 /* -------------------------- */
 /* Article Dialog Boxes Below */
