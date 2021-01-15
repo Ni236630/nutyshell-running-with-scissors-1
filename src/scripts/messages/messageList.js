@@ -1,10 +1,9 @@
 // Component Author: Ryan Youngblood
 // Purpose: List user messages to the messages (chat) section on the DOM
 
-import { deleteMessage, getMessages, saveMessage, useMessages } from "./messagesDataProvider.js"
+import { deleteMessage, getMessages, saveMessage, useMessages, updateMessage } from "./messagesDataProvider.js"
 import { deleteUserMessage, saveUserMessage, useUserMessages } from "./userMessagesDataProvider.js"
 import { useUsers } from '../users/userDataProvider.js'
-import { useFriends } from "../friends/friendDataProvider.js"
 
 // Setup the arrays to plug data in
 let allUsers = []
@@ -39,8 +38,10 @@ export const messageList = () => {
             // Find the message from the join table
             const relatedMessage = allMessages.find(msg => msg.id === userMsg.messageId)
 
-            // Current user
+            // Current user to gain access to their username
             let currentUser = allUsers.find(u => u.id === activeUser)
+
+            // Get recipient to gain access to their username
             let recipientName = allUsers.find(u => u.id === recipient)
 
             // if the related user is the current active user then...
@@ -50,13 +51,13 @@ export const messageList = () => {
                 if (recipient > 0) {
                     
                     return `
-                        <div class="chatMsg--private" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: <b class="userTag">@${recipientName.username}</b> ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
+                        <div class="chatMsg--private" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: <b class="userTag">@${recipientName.username}</b> ${relatedMessage.message} <button id="chat--Edit--${relatedMessage.id}--${userMsg.id}">Edit</button> <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
                     `  
                 // This is from the active user, but is a public message
                 } else {
                     
                     return `
-                    <div class="chatMsg--public" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
+                    <div class="chatMsg--public" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: ${relatedMessage.message} <button id="chat--Edit--${relatedMessage.id}--${userMsg.id}">Edit</button> <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
                     ` 
                 }
 
@@ -100,6 +101,7 @@ eventHub.addEventListener("click", clickEvent => {
         
         // Entry or Delete
         let buttonName = matchingButton[1]
+        console.log(buttonName)
 
         // ID of the message to be used if a user wants to delete
         let messageId = matchingButton[2]
@@ -197,7 +199,42 @@ eventHub.addEventListener("click", clickEvent => {
             .then(() => {
                 deleteMessage(messageId)
             })
+        
+        // If that button is the edit button then...
+        } else if (buttonName === "Edit"){ 
+
+            // Grab all message so we can extract the proper one
+            allMessages = useMessages()
+
+            // Find the message with an id that matches the messageId
+            const messageToEdit = allMessages.find(m => m.id === parseInt(messageId))
+
+            // Set the selector on the DOM
+            const editLocation = document.getElementById(`chat--${userMessageId}`)
             
+            // Add an input box and submit button in place of the chat message being edited by using the selector above
+            editLocation.innerHTML = `<input class="chatEdit" type="text" id="chatTextEditInput" name="chatTextEditInput"> <button id="chat--Submit--${messageId}">Submit</button>`
+
+            // Set a selector for the new input box that was generated
+            const editText = document.getElementById('chatTextEditInput')
+
+            // Fill the new input box with the text of the message
+            editText.value = messageToEdit.message
+        
+        // When done editing and the user clicks submit...
+        } else if (buttonName === "Submit"){
+
+            // Set the selector for the input box with edited text
+            const editText = document.getElementById('chatTextEditInput')
+            
+            const entryObject = {
+                id: parseInt(messageId),  // Make sure the ID is the same as the original message.
+                message: editText.value,  // Grab the text from the selector and put it in the updated message object
+                timestamp: Date.now()     // Update the timestamp
+            }
+
+            // Send the new object to the data provider and update the entry
+            updateMessage(entryObject)
         }
     }
 })

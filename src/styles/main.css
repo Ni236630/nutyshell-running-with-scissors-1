@@ -88,7 +88,7 @@ main {
 .nutshell-main-view > article {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 50%;
 }
 
 .friend-list__content {
