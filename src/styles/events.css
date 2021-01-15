@@ -56,6 +56,7 @@
 
 .new-event-form__title, .edit-event-form__title {
   color: #000;
+}
 
 .new-event-form__top-row, .edit-event-form__top-row {
   display: flex;
