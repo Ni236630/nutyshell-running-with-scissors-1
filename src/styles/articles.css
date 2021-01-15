@@ -35,17 +35,6 @@
     margin: 5px 0;
 }
 
-.newArticleBtn, .article__buttons button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.article-list button img{
-    pointer-events: none;
-}
-
 .article__title, .article__url, .article__synopsis, .article__timestamp, .article__friend{
     padding: 5px;
 }
@@ -65,6 +54,10 @@
 
 .article-list__empty{
     text-align: center;
+}
+
+.article-card {
+  padding: 0.5em;
 }
 
 

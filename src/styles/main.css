@@ -6,6 +6,7 @@
 @import url('./auth.css');
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
 
 :root {
   --heading-font: 'Yusei Magic', sans-serif;
@@ -45,6 +46,19 @@ h2 {
 
 button {
   padding: 3px 4px;
+  z-index: 99999;
+}
+
+i {
+  cursor: pointer;
+}
+
+.btn {
+  color: black;
+}
+
+.btn:hover {
+  color: #333333;
 }
 
 .dashboard {
@@ -92,7 +106,8 @@ main {
   margin: 0.25em;
 }
 
-.task-list, .message-list {
+.task-list,
+.message-list {
   border-radius: 7px;
   border: 3px solid cornsilk;
 }
