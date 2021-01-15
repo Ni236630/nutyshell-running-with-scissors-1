@@ -30,7 +30,7 @@ const render = () => {
   <div class="new-event-form">
     <div class="new-event-form__top-row">
       <h1 class="new-event-form__title text-center">Create a New Event</h1>
-      <button id="new-event-form__close">Close Form</button>
+      <i class="btn fas fa-window-close fa-2x"id="new-event-form__close"></i>
     </div>
     <div class="new-event-form__form">
       <div class="new-event-form__form-group">
