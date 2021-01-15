@@ -10,7 +10,7 @@ export const Event = (eventObject) => {
 
   const thisEventUser = users.find((u) => u.id === eventObject.userId);
 
-  if (eventObject.class === 'userEvent') {
+  if (eventObject.class === 'userEvent' || eventObject.class === 'userEvent nextEvent') {
     return `
       <div class="event-card ${eventObject.class}" id="event-card--${eventObject.id}">
         <div class="event-card__name">Event: ${eventObject.name}</div>

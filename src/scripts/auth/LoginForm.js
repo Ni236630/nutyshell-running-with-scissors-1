@@ -24,7 +24,9 @@ eventHub.addEventListener("click", e => {
 
 const render = () => {
     contentTarget.innerHTML += `
-        <section class="login">
+        <section class="login text-center">
+        <h1 class="text-center">Welcome To Nutshell</h1>
+        <h2 class="text-center">Login</h2>
             <input id="login__username" type="text" placeholder="Enter your username" autocomplete="off">
             <button id="login__button">Log In</button>
         </section>
