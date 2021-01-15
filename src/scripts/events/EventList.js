@@ -49,7 +49,7 @@ export const EventList = () => {
 
       return `
       <div class="event-list__top-row">
-      <button id="newEvent">New Event</button>      
+      <i class="btn fas fa-plus-circle fa-2x" id="newEvent"></i>      
       </div>
       <div class="event-list__events">
       ${render(allEvents)}
@@ -59,7 +59,7 @@ export const EventList = () => {
     } else {
       return `
       <div class="event-list__top-row">
-      <button id="newEvent">New Event</button>      
+      <i class="btn fas fa-plus-circle fa-2x" id="newEvent"></i>      
       </div>
       <div class="event-list__events">
       ${render(userEvents)}
@@ -70,7 +70,7 @@ export const EventList = () => {
   } else {
     return `
     <div class="event-list__top-row">
-    <button id="newEvent">New Event</button>      
+    <i class="btn fas fa-plus-circle fa-2x" id="newEvent"></i>      
     </div>
     <div class="event-list__events">
     <h2>No events found.</h2>
