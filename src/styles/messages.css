@@ -4,5 +4,19 @@
 }
 
 .chatMessages {
-  height: 75%;
+    overflow-y: scroll;
+    height: 150px;
+}
+
+.chatMsg--private {
+    background-color: black;
+    color: rgb(152, 211, 235);
+}
+
+.chatMsg--public {
+    background-color: rgb(152, 211, 235);
+}
+
+.userTag {
+    color: red;
 }

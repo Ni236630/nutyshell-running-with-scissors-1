@@ -4,6 +4,7 @@
 import { deleteMessage, getMessages, saveMessage, useMessages } from "./messagesDataProvider.js"
 import { deleteUserMessage, saveUserMessage, useUserMessages } from "./userMessagesDataProvider.js"
 import { useUsers } from '../users/userDataProvider.js'
+import { useFriends } from "../friends/friendDataProvider.js"
 
 // Setup the arrays to plug data in
 let allUsers = []
@@ -22,38 +23,67 @@ export const messageList = () => {
     allUsers = useUsers()
     allMessages = useMessages()
     allUserMessages = useUserMessages()
+    // Get active users ID
     activeUser = parseInt(sessionStorage.getItem('activeUser'));
     
     // Convert the neccessary data to strings
     const convertedToStrings = allUserMessages.map(
         (userMsg) => {
             
-            // Find the user from the join table
-            const relatedUser = allUsers.find(user => user.id === userMsg.userId)
+            // Get the recipient ID
+            const recipient = userMsg.recipient_Id
+
+            // Find the user who sent the message from the join table
+            const sender = allUsers.find(user => user.id === userMsg.userId)
 
             // Find the message from the join table
             const relatedMessage = allMessages.find(msg => msg.id === userMsg.messageId)
 
-            if (relatedUser.id === activeUser) {
-                return `
-                <div class="chatMsg" id="chat--${relatedMessage.id}"><b>${relatedUser.username}</b>: ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
-                `
-            } else {
-                // Return each chat message with the username
-                return `
-                <div class="chatMsg" id="chat--${relatedMessage.id}"><b>${relatedUser.username}</b>: ${relatedMessage.message}</div>
-                `
-            }
+            // Current user
+            let currentUser = allUsers.find(u => u.id === activeUser)
+            let recipientName = allUsers.find(u => u.id === recipient)
 
-        }
+            // if the related user is the current active user then...
+            if (sender.id === activeUser) {
+                
+                // if this is a private message then...
+                if (recipient > 0) {
+                    
+                    return `
+                        <div class="chatMsg--private" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: <b class="userTag">@${recipientName.username}</b> ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
+                    `  
+                // This is from the active user, but is a public message
+                } else {
+                    
+                    return `
+                    <div class="chatMsg--public" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: ${relatedMessage.message} <button id="chat--Delete--${relatedMessage.id}--${userMsg.id}">Delete</button></div>
+                    ` 
+                }
+
+            } else {
+                
+                if (recipient > 0) {
+
+                    if (recipient === activeUser) {
+                        
+                        return `
+                        <div class="chatMsg--private" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: <b class="userTag">@${currentUser.username}</b> ${relatedMessage.message}</div>
+                        ` 
+                    }
+
+                } else {
+                    // Return all public chat messages with the usernames
+                    return `
+                    <div class="chatMsg--public" id="chat--${relatedMessage.id}"><b>${sender.username}</b>: ${relatedMessage.message}</div>
+                    `
+                }
+            }
+       }
     ).join("")
     
     // Return the full chat message DOM element with all needed data plugged in
     return `
-    <select class="privacy__select" id="privacySelect">
-        <option value=0>Public</option>
-        <option value=1>Private</option>
-    </select>
+    <h1>MESSAGE LIST</h1>
     <div class="chatMessages" id="chatMessages">
         <div class="chatMsg">${convertedToStrings}</div>
     </div>
@@ -61,76 +91,114 @@ export const messageList = () => {
     `
 }
 
-//-----------------------------------------------//
-//               Event Listeners                 //
-//-----------------------------------------------//
-
 eventHub.addEventListener("click", clickEvent => {
     
     // If the click event took place on a chat-- button then..
     if(clickEvent.target.id.startsWith("chat--")){
         
+        // Split the button name to get either Entry or Delete and access to ID's
         let matchingButton = clickEvent.target.id.split("--")
+        
+        // Entry or Delete
         let buttonName = matchingButton[1]
+
+        // ID of the message to be used if a user wants to delete
         let messageId = matchingButton[2]
+
+
         let userMessageId = matchingButton[3]
 
         // If that button is the Entry button then..
         if (buttonName === "Entry") {
             // Grab the user text
             const userText = document.querySelector("#chatTextInput")
+
             // Get the active user ID
             activeUser = parseInt(sessionStorage.getItem('activeUser'));
 
-            // Create a new object to pass to the messages table in the json DB
-            const newMessage = {
+            // If the message is meant to be private then...
+            if (userText.value.startsWith("@")) {
+
+                // Split the input to grab the username
+                const friendTag = userText.value.split(" ")
+
+                // Remove the @ so the name can be used to search
+                const friendName = friendTag[0].substring(1)
+            
+                // Find the user by friendName
+                const recipient = allUsers.find(f => f.username === friendName)
+                
+                // Remove the @username and only save the actual message
+                const message = userText.value.substr(userText.value.indexOf(" ") + 1)
+
+                // Create a new object to pass to the messages table in the json DB
+                const newMessage = {
+                    message: message,
+                    timestamp: Date.now()
+                    }
+    
+                    // Clear out the input box
+                    userText.value = ""
+                    
+                    // Send the new message to the json DB
+                    saveMessage(newMessage)
+                        // Update messages so the new ID can be accessed
+                        .then(getMessages)
+                        .then(() => {
+                            // Grab the last entry from the array
+                            const messages = useMessages().pop()
+                            
+                            // Create a new object to pass the new join table to the json DB
+                            const newUserMessage = {
+                                userId: activeUser,
+                                messageId: messages.id,
+                                recipient_Id: recipient.id
+                            }
+    
+                            // Send the new object to the userMessages table in the json DB
+                            saveUserMessage(newUserMessage)
+                        })
+            
+            // If there was no '@' then the message is public so do this...
+            } else {
+               
+                // Create a new object to pass to the messages table in the json DB
+                const newMessage = {
                 message: userText.value,
                 timestamp: Date.now()
-            }
+                }
 
-            // Clear out the input box
-            userText.value = ""
-            
-            // Send the new message to the json DB
-            saveMessage(newMessage)
-                // Update messages so the new ID can be accessed
-                .then(getMessages)
-                .then(() => {
-                    // Grab the last entry from the array
-                    const messages = useMessages().pop()
-                    
-                    // Create a new object to pass the new join table to the json DB
-                    const newUserMessage = {
-                        userId: activeUser,
-                        messageId: messages.id,
-                        recipientId: 0
-                    }
+                // Clear out the input box
+                userText.value = ""
+                
+                // Send the new message to the json DB
+                saveMessage(newMessage)
+                    // Update messages so the new ID can be accessed
+                    .then(getMessages)
+                    .then(() => {
+                        // Grab the last entry from the array
+                        const messages = useMessages().pop()
+                        
+                        // Create a new object to pass the new join table to the json DB
+                        const newUserMessage = {
+                            userId: activeUser,
+                            messageId: messages.id,
+                            recipient_Id: 0
+                        }
 
-                    // Send the new object to the userMessages table in the json DB
-                    saveUserMessage(newUserMessage)
-                })
+                        // Send the new object to the userMessages table in the json DB
+                        saveUserMessage(newUserMessage)
+                    })
+                }
 
         // If that button is the Delete button then...
         } else if (buttonName === "Delete") {
             
             deleteUserMessage(userMessageId)
-            deleteMessage(messageId)
-        }
-    }
-})
-
-// Event listener for public/private filtering. Needs work!
-eventHub.addEventListener("change", e => {
-
-    if (e.target.id === "privacySelect") {
-        let privacyOptionChosen = e.target.value
-
-        if (privacyOptionChosen = 1){
-            console.log(`Private was chosen`)
-            chatText.innerHTML = "Private"
-        } else {
-            console.log(`Public was chosen`)
-            chatText.innerHTML = 'Public'
+            .then(() => {
+                deleteMessage(messageId)
+            })
+            
         }
     }
 })
