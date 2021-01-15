@@ -96,9 +96,16 @@ eventHub.addEventListener("click", clickEvent => {
     // If the click event took place on a chat-- button then..
     if(clickEvent.target.id.startsWith("chat--")){
         
+        // Split the button name to get either Entry or Delete and access to ID's
         let matchingButton = clickEvent.target.id.split("--")
+        
+        // Entry or Delete
         let buttonName = matchingButton[1]
+
+        // ID of the message to be used if a user wants to delete
         let messageId = matchingButton[2]
+
+
         let userMessageId = matchingButton[3]
 
         // If that button is the Entry button then..
@@ -111,48 +118,46 @@ eventHub.addEventListener("click", clickEvent => {
 
             // If the message is meant to be private then...
             if (userText.value.startsWith("@")) {
-                
-                // Get friends
-                const friends = useFriends()
 
                 // Split the input to grab the username
                 const friendTag = userText.value.split(" ")
 
                 // Remove the @ so the name can be used to search
                 const friendName = friendTag[0].substring(1)
-                console.log(`My friend is: `, friendName)
-
-                // Need to get back all friends table entries with all .userId === activeUser (activeUser already stores current user ID) -----map friends?
-                // const myFriends = friends.filter(f => f.userId === activeUser)
+            
+                // Find the user by friendName
+                const recipient = allUsers.find(f => f.username === friendName)
                 
+                // Remove the @username and only save the actual message
+                const message = userText.value.substr(userText.value.indexOf(" ") + 1)
 
                 // Create a new object to pass to the messages table in the json DB
-                // const newMessage = {
-                //     message: userText.value,
-                //     timestamp: Date.now()
-                //     }
+                const newMessage = {
+                    message: message,
+                    timestamp: Date.now()
+                    }
     
-                //     // Clear out the input box
-                //     userText.value = ""
+                    // Clear out the input box
+                    userText.value = ""
                     
-                //     // Send the new message to the json DB
-                //     saveMessage(newMessage)
-                //         // Update messages so the new ID can be accessed
-                //         .then(getMessages)
-                //         .then(() => {
-                //             // Grab the last entry from the array
-                //             const messages = useMessages().pop()
+                    // Send the new message to the json DB
+                    saveMessage(newMessage)
+                        // Update messages so the new ID can be accessed
+                        .then(getMessages)
+                        .then(() => {
+                            // Grab the last entry from the array
+                            const messages = useMessages().pop()
                             
-                //             // Create a new object to pass the new join table to the json DB
-                //             const newUserMessage = {
-                //                 userId: activeUser,
-                //                 messageId: messages.id,
-                //                 recipientId: 0
-                //             }
+                            // Create a new object to pass the new join table to the json DB
+                            const newUserMessage = {
+                                userId: activeUser,
+                                messageId: messages.id,
+                                recipient_Id: recipient.id
+                            }
     
-                //             // Send the new object to the userMessages table in the json DB
-                //             saveUserMessage(newUserMessage)
-                //         })
+                            // Send the new object to the userMessages table in the json DB
+                            saveUserMessage(newUserMessage)
+                        })
             
             // If there was no '@' then the message is public so do this...
             } else {
