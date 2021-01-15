@@ -56,8 +56,8 @@ const render = () => {
     return `
         <div class="edit-article-form">
             <div class="edit-article-form__top-row">
-                <h1 class="edit-article-form__title">Edit Article</h1>
-                <button id="edit-article-form__close">Close Form</button>
+                <h1 class="edit-article-form__title">Edit Your Article</h1>
+                <button id="edit-article-form__close"><img src="../images/close-icon.png"></button>
             </div>
             <div class="edit-article-form__form">
                 <div class="edit-article-form__form-group">
