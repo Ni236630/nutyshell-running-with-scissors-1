@@ -40,17 +40,15 @@ eventHub.addEventListener('click', (e) => {
   }
 });
 
-export const Nutshell = () => 
-  Promise.all(promises)
-  .then(render);
+export const Nutshell = () =>
+  getUsers().then(() => {
+    Promise.all(promises).then(render);
+  });
 
 const CurrentUser = () => {
   const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
   const users = useUsers();
   const name = users.find((u) => u.id === activeUserId);
-  if (name === undefined) {
-    return `<div class="top-row__current-user"><b>Welcome, new user!</b></div>`;
-  }
   return `<div class="top-row__current-user">Current User: <b>${name.username}</b></div>`;
 };
 
