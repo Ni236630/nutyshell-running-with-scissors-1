@@ -1,13 +1,12 @@
 import { editTask } from "./taskDataProvider.js";
 
-const eventHub = document.querySelector(".container")
-  const id = customEvent.detail.taskId
- eventHub.addEventListener("checkTaskOff", customEvent => {
-   
-  const name = document.getElementById("taskName").value;
-    const completionDate = document.getElementById("taskDate").value;
-    const userId = parseInt(sessionStorage.getItem('activeUser'))
-    const isComplete = "true"
+
+ export const taskComplete = ()=>{
+  const id = parseInt(document.getElementById("deleteTask").value)
+  const name = document.getElementById("taskName").innerHTML.value;
+  const completionDate = document.getElementById("taskDate").innerHTML.value;
+  const userId = parseInt(sessionStorage.getItem('activeUser'))
+  const isComplete = "true"
   
   
   const completedTask = {
@@ -20,4 +19,4 @@ const eventHub = document.querySelector(".container")
   }
   
  return editTask(completedTask)
- })
+ }
