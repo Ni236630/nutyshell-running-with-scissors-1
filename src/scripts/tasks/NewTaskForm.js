@@ -28,7 +28,7 @@ eventHub.addEventListener("click", (clickEvent) => {
       completionDate:completionDate,
       isComplete:isComplete
     }
-    
+  clickEvent.preventDefault()
    return saveTask(newTask)
 
   }
