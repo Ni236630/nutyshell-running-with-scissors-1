@@ -50,7 +50,6 @@ export const messageList = () => {
     
     // Return the full chat message DOM element with all needed data plugged in
     return `
-    <h1>MESSAGE LIST</h1>
     <select class="privacy__select" id="privacySelect">
         <option value=0>Public</option>
         <option value=1>Private</option>

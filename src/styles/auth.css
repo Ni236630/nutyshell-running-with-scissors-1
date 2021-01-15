@@ -1,0 +1,23 @@
+.auth {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 70%;
+  top: 30%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  align-items: center;
+}
+
+.auth--login {
+  margin-bottom: 1em;
+}
+
+.auth section input {
+  padding: 5px;
+}
+
+.auth section button {
+  padding: 3px 4px;
+}

@@ -1,26 +1,25 @@
-.article-list {   
-    border: 2px solid red;
-    padding: 1em;
-    overflow-y: scroll;
-    height: 250px;
+.article-list {
+  padding: 1em;
+  overflow-y: scroll;
 }
 
 .article-list__top-row {
-    margin-bottom: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .userArticle {
-    margin-bottom: 0.5em;
-    background-color: lime;
+  margin-bottom: 0.5em;
+  background-color: var(--user-background-color);
+  padding: 0.25em 0.5em 0.5em;
+  border-radius: 7px;
 }
 
 .friendArticle {
-    margin-bottom: 0.5em;
-    background-color: coral;
+  margin-bottom: 0.5em;
+  background-color: var(--friend-background-color);
 }
 
 .article__buttons {
-    display:flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-

@@ -1,6 +1,6 @@
 .event-list {
-  border: 2px solid red;
   padding: 1em;
+  overflow-y: scroll;
 }
 
 .event-list__top-row {
@@ -9,14 +9,16 @@
 
 .event-card{
   margin-bottom: 0.5em;
+  padding: 0.25em 0.5em 0.5em;
+  border-radius: 7px;
 }
 
 .userEvent {
-  background-color: lime;
+  background-color: var(--user-background-color);
 }
 
 .friendEvent {
-  background-color: coral;
+  background-color: var(--friend-background-color);
 }
 
 #newEventFormDialog {

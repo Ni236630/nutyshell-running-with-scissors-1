@@ -58,30 +58,33 @@ const render = () => {
     <article class="top-row">
       <div class="top-row__current-user">Current User: <b>${CurrentUser()}</b></div>
       <div class="top-row__current-weather">
-        <h1>CURRENT WEATHER</h1>  
+        <h4>CURRENT WEATHER</h4>  
       </div>
       <div class="top-row__logout-button"><button id="logout">Log Out</button></div>
     </article>
     <main>
       <aside class="friend-list">
+      <h2 class="text-center">FRIENDS</h2>
         ${FriendList()}
       </aside>
       <div class="nutshell-main-view">
         <article>
           <section class="event-list">
+          <h2 class="text-center">EVENTS</h2>
             ${EventList()}
           </section>
           <section class="message-list">
+          <h2 class="text-center">MESSAGES</h2>
             ${messageList()}
           </section>
         </article>
         <article>
           <section class="task-list">
-            <h1>TASK LIST</h1>
-            <!-- TaskList() --> 
+            <h2 class="text-center">TASKS</h2>
             ${taskList()}   
-          </section>
-          <section class="article-list">
+            </section>
+            <section class="article-list">
+            <h2 class="text-center">ARTICLES</h2>
             ${ArticleList()}   
           </section>
         </article>
