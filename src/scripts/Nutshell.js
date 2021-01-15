@@ -7,7 +7,7 @@ import { getMessages } from './messages/messagesDataProvider.js';
 import { getFriends } from './friends/friendDataProvider.js';
 import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
-import { weatherList, getLocation } from './weather/weatherList.js';
+import { weatherList } from './weather/weatherList.js';
 import { EventList } from './events/EventList.js';
 import { messageList } from './messages/messageList.js';
 
@@ -40,10 +40,9 @@ eventHub.addEventListener('click', (e) => {
   }
 });
 
-export const Nutshell = () => {
-  getLocation();
-  Promise.all(promises).then(render);
-};
+export const Nutshell = () => 
+  Promise.all(promises)
+  .then(render);
 
 const CurrentUser = () => {
   const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
@@ -53,6 +52,9 @@ const CurrentUser = () => {
 };
 
 const render = () => {
+  // Initialize local weather
+  weatherList();
+
   // Render all your UI components here
   contentTarget.innerHTML = `
     <article class="top-row">
