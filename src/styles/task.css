@@ -1,3 +1,4 @@
+/* // Component Author: Nicholas Douso // */
 .task-container{
   padding: 1em;
   overflow-y: scroll;
@@ -29,4 +30,25 @@ i{
 .taskDate{
   display: flex ;
   flex-direction: row;
+}
+
+#taskDialog{
+  
+  margin: auto;
+  height:125px;
+  width:600px;
+  border-radius: 7px;
+  border:none;
+  
+}
+
+.addingTask{
+ 
+  border:none;
+  
+}
+
+.taskForm{
+  border:none;
+ 
 }

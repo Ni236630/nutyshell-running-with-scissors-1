@@ -1,3 +1,4 @@
+// Component Author: Nicholas Douso
 import { editTask } from "./taskDataProvider.js";
 
 const eventHub = document.querySelector(".container")

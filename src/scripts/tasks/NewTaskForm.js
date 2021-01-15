@@ -51,7 +51,7 @@ eventHub.addEventListener("newTaskClicked", customEvent =>{
     const taskDialogText = document.getElementById("taskDialog__form")
     
     taskDialogText.innerHTML = `
-      <div>
+      <div id="taskDialog">
         <form class="addingTask" action="">
           <fieldset class="taskForm">
           <label for="taskName">Task Name:<label>
@@ -59,6 +59,9 @@ eventHub.addEventListener("newTaskClicked", customEvent =>{
           <label for="completionDate">Due Date:<label>
           <input class="taskDateInput" type="date" name="completionDate" id="taskDate">
           <button id="saveTask">Save</button>
+          
+            <i class="taskClose--btn btn fas fa-window-close fa-2x" id="closeDialog__task"></i>
+          
         </form>
       </div>`
      taskDialog.showModal()
@@ -71,7 +74,7 @@ export const taskDialog = () => {
   return `
   <dialog id="taskDialog">
     <div id="taskDialog__form"></div>
-    <button id="closeDialog__task">close</button>
+   
   </dialog>
   `
 }
