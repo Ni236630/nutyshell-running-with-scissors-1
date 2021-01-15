@@ -17,7 +17,9 @@ export const Event = (eventObject) => {
         <div class="event-card__organizer">Organizer: ${thisEventUser.username}</div>
         <div class="event-card__location">Location: ${eventObject.location}</div>
         <div class="event-card__date">Date: ${eventObject.date}</div>
-        <button id="deleteEvent--${eventObject.id}">Delete Event</button>
+        <div class="event-card__delete-container text-center">
+          <i id="deleteEvent--${eventObject.id}" class="fas btn fa-trash-alt fa-2x"></i>
+        </div>
       </div> 
     `;
   } else {

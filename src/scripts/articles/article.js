@@ -19,12 +19,12 @@ export const ArticleConverter = (articleObject) => {
     } else {
         // If this is the current user's article, specify that it is and allow the delete and edit buttons
         owner = "userArticle";
-        editBtn = `<button id="editArticle--${articleObject.id}"><img src="../images/edit-icon.png"></button>`;
-        deleteBtn = `<button id="deleteArticle--${articleObject.id}"><img src="../images/delete-icon.png"></button>`;
+        editBtn = `<i id="editArticle--${articleObject.id}" class="fas btn fa-edit fa-2x"></i>`;
+        deleteBtn = `<i id="deleteArticle--${articleObject.id}" class="fas btn fa-trash-alt fa-2x"></i>`;
         friendName = "";
     };
     return `
-        <div class="article-card, ${owner}" id="article-card--${articleObject.id}">
+        <div class="article-card ${owner}" id="article-card--${articleObject.id}">
             <div class="article__title">${articleObject.title}</div>
             <div class="article__url"><a href="${articleObject.url}" target="_blank">Article Link</a></div>
             <div class="article__synopsis">${articleObject.synopsis}</div>
