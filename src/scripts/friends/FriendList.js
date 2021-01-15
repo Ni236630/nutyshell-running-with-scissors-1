@@ -26,15 +26,15 @@ export const FriendList = () => {
 
     return `
     <section class="friend-list__content">
-      <div class="friend-list__requests">
+      <div class="friend-list__requests text-center">
         <h3>Active Friend Requests: </h3>
-        <div id="friendRequests">${FriendRequests()}</div>
+        <div id="friendRequests" class="text-center">${FriendRequests()}</div>
       </div>
       <div class="friend-list__add">
         <h3>Search for a Friend</h3>
         <div class="friend-list__search-container">${FriendSearch()}</div>
       </div>
-      <div class="friend-list__friends">
+      <div class="friend-list__friends text-center">
         <h3>Your Friends</h3>
         <div class="friend-list__list">${render(thisUserFriends)}</div>
       </div>
@@ -42,17 +42,17 @@ export const FriendList = () => {
     `;
   } else {
     return `<section class="friend-list__content">
-    <div class="friend-list__requests">
+    <div class="friend-list__requests text-center">
       <h3>Active Friend Requests: </h3>
-      <div id="friendRequests">${FriendRequests()}</div>
+      <div id="friendRequests" class="text-center">${FriendRequests()}</div>
     </div>
     <div class="friend-list__add">
       <h3>Search for a Friend</h3>
       <div class="friend-list__search-container">${FriendSearch()}</div>
     </div>
     <div class="friend-list__friends">
-        <h3>Your Friends</h3>
-        <div class="friend-list__list"><h2>YOU HAVE NO FRIENDS.</h2></div>
+        <h3 class="text-center">Your Friends</h3>
+        <div class="friend-list__list text-center"><h2>YOU HAVE NO FRIENDS</h2></div>
         </div>
       </section>
     `;

@@ -1,29 +1,32 @@
-/* Ryan DeVault - Purpose: application of styles related to article components */
-
-.article-list {   
-    border: 2px solid red;
-    padding: 1em;
-    overflow-y: scroll;
+.article-list {
+  padding: 1em;
+  overflow-y: scroll;
 }
 
 .article-list__top-row {
-    margin-bottom: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .userArticle {
     margin-bottom: 1em;
-    background-color: lime;
-    border: solid black 2px;
-    border-radius: 5%;
-    box-shadow: 8px 8px 10px grey;  
+    background-color: var(--user-background-color);
+    border-radius: 7px;
+}
+
+.userArticle:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
 }
 
 .friendArticle {
     margin-bottom: 1em;
-    background-color: coral;
-    border: solid black 2px;
-    border-radius: 5%;
-    box-shadow: 8px 8px 10px grey; 
+    background-color: var(--friend-background-color);
+    border-radius: 7px;
+}
+
+.friendArticle:hover {
+  transform: translateY(5px);
+  box-shadow: 3px 10px 20px #000000;
 }
 
 .article__buttons {
