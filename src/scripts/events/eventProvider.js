@@ -46,7 +46,7 @@ export const deleteEvent = (eventId) => {
 
 // Edit the event in our database
 export const editEvent = (eventToEdit) => {
-  return fetch(`http://localhost:8088/entries/${eventToEdit.id}`, {
+  return fetch(`http://localhost:8088/events/${eventToEdit.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
