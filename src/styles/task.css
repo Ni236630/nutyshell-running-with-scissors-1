@@ -34,21 +34,24 @@ i{
 
 #taskDialog{
   
-  margin: auto;
+  height: 100%;
+  width: auto;
+  background-color: #000000aa; 
+  
+  
+  
+}
+
+
+.taskForm{
+  border:none;
+  background-color: white;
+  margin-top:30%;
+  margin-left:auto;
+  margin-right:auto;
   height:125px;
   width:600px;
   border-radius: 7px;
-  border:none;
-  
-}
-
-.addingTask{
- 
-  border:none;
-  
-}
-
-.taskForm{
   border:none;
  
 }
