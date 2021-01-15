@@ -111,7 +111,7 @@ export const ArticleList = () => {
     }else{
         return `
             <div class="article-list__top-row">
-                <div class="newArticleBtn-div"><i id="newArticle--${currentUser}" class="newArticleBtn fas fa-plus-circle fa-2x"</i></div>
+                <div class="newArticleBtn-div"><i id="newArticle--${currentUser}" class="newArticleBtn fas fa-plus-circle fa-2x"></i></div>
             </div>
             <div class="article-list__empty">No articles to display!</div>
             <dialog id="newArticleFormDialog"></dialog>
