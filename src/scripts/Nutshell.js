@@ -7,11 +7,11 @@ import { getMessages } from './messages/messagesDataProvider.js';
 import { getFriends } from './friends/friendDataProvider.js';
 import { LoginForm } from './auth/LoginForm.js';
 import { RegisterForm } from './auth/RegisterForm.js';
-import { weatherList, getLocation } from './weather/weatherList.js';
+import { weatherList } from './weather/weatherList.js';
 import { EventList } from './events/EventList.js';
 import { messageList } from './messages/messageList.js';
 
-import { taskList } from "./tasks/taskList.js";
+import { taskList } from './tasks/taskList.js';
 import { FriendList } from './friends/FriendList.js';
 import { ArticleList } from './articles/ArticleList.js';
 import { getFriendRequests } from './friends/friendRequestDataProvider.js';
@@ -40,23 +40,28 @@ eventHub.addEventListener('click', (e) => {
   }
 });
 
-export const Nutshell = () => {
-  getLocation();
-  Promise.all(promises).then(render);
-};
+export const Nutshell = () => 
+  Promise.all(promises)
+  .then(render);
 
 const CurrentUser = () => {
   const activeUserId = parseInt(sessionStorage.getItem('activeUser'));
   const users = useUsers();
   const name = users.find((u) => u.id === activeUserId);
-  return name.username;
+  if (name === undefined) {
+    return `<div class="top-row__current-user"><b>Welcome, new user!</b></div>`;
+  }
+  return `<div class="top-row__current-user">Current User: <b>${name.username}</b></div>`;
 };
 
 const render = () => {
+  // Initialize local weather
+  weatherList();
+
   // Render all your UI components here
   contentTarget.innerHTML = `
     <article class="top-row">
-      <div class="top-row__current-user">Current User: <b>${CurrentUser()}</b></div>
+      ${CurrentUser()}
       <div class="top-row__current-weather">
         <h1>CURRENT WEATHER</h1>  
       </div>
@@ -94,24 +99,25 @@ eventHub.addEventListener('eventsStateChanged', () => {
   document.querySelector('.event-list').innerHTML = EventList();
 });
 // Listen for a state change in articles
-eventHub.addEventListener("articlesStateChanged", () => 
-  document.querySelector('.article-list').innerHTML = ArticleList()
+eventHub.addEventListener(
+  'articlesStateChanged',
+  () => (document.querySelector('.article-list').innerHTML = ArticleList())
 );
 
 // Listen for a state change in messages
-eventHub.addEventListener("messagesStateChanged", () => {
+eventHub.addEventListener('messagesStateChanged', () => {
   // Update my app state data to properly update the DOM
   getUsers()
     .then(getMessages)
     .then(getUserMessages)
     .then(() => {
       // Rend to the DOM
-      document.querySelector('.message-list').innerHTML = messageList()
+      document.querySelector('.message-list').innerHTML = messageList();
       // Define the chat area
-      let chatBox = document.getElementById("chatMessages")
+      let chatBox = document.getElementById('chatMessages');
       // Keep the chat area scrolled to the bottom to show most recent messages only
-      chatBox.scrollTop = chatBox.scrollHeight
-    })
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
 });
 eventHub.addEventListener('friendsStateChanged', () => {
   document.querySelector('.friend-list').innerHTML = FriendList();

@@ -38,7 +38,7 @@ const render = () => {
         <div class="new-article-form">
             <div class="new-article-form__top-row">
                 <h1 class="new-article-form__title">Create a New Article</h1>
-                <button id="new-article-form__close">Close Form</button>
+                <button id="new-article-form__close"><img src="../images/close-icon.png"></button>
             </div>
             <div class="new-article-form__form">
                 <div class="new-article-form__form-group">
@@ -47,7 +47,7 @@ const render = () => {
                 </div>
                 <div class="new-article-form__form-group">
                     <label for="newArticleUrl">Url: </label>  
-                    <input id="newArticleUrl" type="text" autocomplete="off>
+                    <input id="newArticleUrl" type="text" autocomplete="off">
                 </div>
                 <div class="new-article-form__form-group">
                     <label for="newArticleSynopsis">Synopsis: </label>  
