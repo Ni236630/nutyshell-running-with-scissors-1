@@ -4,11 +4,29 @@
   display: flex;
 }
 
+.task-list{
+  padding:16px
+}
 .task__container{
- margin-left: auto;
+  display:flex;
+  flex-direction: column;
+  margin-left: auto;
 }
 
-li {
-  background-color: #6fe95f;
-  margin:auto; 
+.task__card {
+  background-color: white;
+  margin: 5px; 
+  border-radius: 7px;
+}
+
+.task__card--data{
+  margin: 7px;
+}
+
+i{
+  margin: auto;
+}
+.taskDate{
+  display: flex ;
+  flex-direction: row;
 }

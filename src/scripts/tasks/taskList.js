@@ -51,14 +51,14 @@ export const taskList = () => {
       //looping over tasksObjects to create HTML
         return` 
         <div class="task__container">
-        <button id="addTask">Add New Task</button>
-         <ul>${tasks.map((task)=>{
+        <i id="addTask" class="btn fas fa-plus-circle fa-2x"></i>
+         ${tasks.map((task)=>{
           if(task.userId === activeUserId && task.isComplete === "false"){
             
              return  taskHTMLConverter(task)
           }
       }).join("")}
-        </ul>
+        
         ${taskDialog()}
       </div>`
 }
