@@ -39,3 +39,16 @@ export const deleteMessage = entryId => {
     .then(getMessages)
     .then(dispatchStateChangeEvent)
 }
+
+// Added the ability to edit chat messages - Ryan Y.
+export const updateMessage = entryObject => {
+  return fetch(`http://localhost:8088/messages/${entryObject.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(entryObject)
+  })
+    .then(getMessages)
+    .then(dispatchStateChangeEvent)
+}
