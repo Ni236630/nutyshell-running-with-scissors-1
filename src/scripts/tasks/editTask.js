@@ -1,10 +1,10 @@
 // Component Author: Nicholas Douso
 import { editTask } from "./taskDataProvider.js";
 
-const eventHub = document.querySelector(".container")
 
- export const taskComplete = ()=>{
-  const id = parseInt(document.getElementById("deleteTask").value)
+ export const taskComplete = (taskId)=>{
+   
+  
   const name = document.getElementById("taskCardName").innerHTML;
   const completionDate = document.querySelector(".taskDate").id;
   const userId = parseInt(sessionStorage.getItem('activeUser'))
@@ -13,7 +13,7 @@ const eventHub = document.querySelector(".container")
   
   const completedTask = {
     
-    id:id,
+    id:taskId,
     userId:userId,
     name:name,
     completionDate:completionDate,

@@ -6,6 +6,7 @@
 }
 
 .task-list{
+  overflow-y: scroll;
   padding:16px
 }
 .task__container{
@@ -43,9 +44,26 @@ i{
 
 .taskForm{
   background-color: #70b1e6;
-  margin-top:25%;
+  border-radius: 7px;
+  /* margin-top:25%;
   max-width: 50%;
   margin-left:25%;
-  border-radius: 7px;
-  padding: 17px;
+  
+  padding: 17px; */
+}
+
+#taskDialog--close{
+  position: relative;
+  left: 94%;
+  top: -6em;
+
+}
+
+.addingTask{
+  margin: auto;
+  height: 200px;
+  width: 600px;
+  top: 25em;
+  position: relative;
+  margin: auto;
 }

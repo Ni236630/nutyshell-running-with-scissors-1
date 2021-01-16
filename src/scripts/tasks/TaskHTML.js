@@ -15,9 +15,9 @@ HTML of a single task
      
       <div class="task__card">
         <div class="task__card--data">
-          <label for="taskLabel--${taskObject.id}" id="taskCardName"><b>${taskObject.name}</b></label> <input type="checkbox" id="taskCheckbox--${taskObject.id}" name="completeTask" value=""> 
+          <label for="taskCheckbox--${taskObject.id}" id="taskCardName"><b>${taskObject.name}</b></label> <input type="checkbox" id="taskCheckbox--${taskObject.id}" name="completeTask" value=""> 
           <div class="taskDate" id=${taskObject.completionDate}>complete by: ${taskObject.completionDate}
-            <i class="fas btn fa-trash-alt fa" id="deleteTask" value="${taskObject.id}"></i>
+            <i class="fas btn fa-trash-alt fa" id="deleteTask--${taskObject.id}"></i>
           </div> 
         </div>
      </div>
