@@ -1,14 +1,69 @@
+/* // Component Author: Nicholas Douso // */
 .task-container{
   padding: 1em;
   overflow-y: scroll;
   display: flex;
 }
 
+.task-list{
+  overflow-y: scroll;
+  padding:16px
+}
 .task__container{
- margin-left: auto;
+  display:flex;
+  flex-direction: column;
+  margin-left: auto;
 }
 
-li {
-  background-color: #6fe95f;
-  margin:auto; 
+.task__card {
+  background-color: white;
+  margin: 5px; 
+  border-radius: 7px;
+}
+
+.task__card--data{
+  margin: 7px;
+}
+
+i{
+  margin: auto;
+}
+.taskDate{
+  display: flex ;
+  flex-direction: row;
+}
+
+#taskDialog{
+  
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000000aa;
+}
+
+
+.taskForm{
+  background-color: #70b1e6;
+  border-radius: 7px;
+  /* margin-top:25%;
+  max-width: 50%;
+  margin-left:25%;
+  
+  padding: 17px; */
+}
+
+#taskDialog--close{
+  position: relative;
+  left: 94%;
+  top: -6em;
+
+}
+
+.addingTask{
+  margin: auto;
+  height: 200px;
+  width: 600px;
+  top: 25em;
+  position: relative;
+  margin: auto;
 }

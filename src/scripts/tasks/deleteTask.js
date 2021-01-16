@@ -1,4 +1,4 @@
-
+// Component Author: Nicholas Douso
 import { deleteTask } from "./taskDataProvider.js";
 
 

@@ -12,12 +12,16 @@ HTML of a single task
  export const taskHTMLConverter = (taskObject) => {
    
   return `
-     <li>
+     
       <div class="task__card">
-        <label for="taskLabel--${taskObject.id}" id="taskCardName">${taskObject.name}</label> <input type="checkbox" id="taskCheckbox--${taskObject.id}" name="completeTask" value=""> 
-        <div class="taskDate" id=${taskObject.completionDate}>complete by: ${taskObject.completionDate}<div> <button id="deleteTask" value="${taskObject.id}">delete</button>
+        <div class="task__card--data">
+          <label for="taskCheckbox--${taskObject.id}" id="taskCardName"><b>${taskObject.name}</b></label> <input type="checkbox" id="taskCheckbox--${taskObject.id}" name="completeTask" value=""> 
+          <div class="taskDate" id=${taskObject.completionDate}>complete by: ${taskObject.completionDate}
+            <i class="fas btn fa-trash-alt fa" id="deleteTask--${taskObject.id}"></i>
+          </div> 
+        </div>
      </div>
-    </li>
+    
   `
  }
  
