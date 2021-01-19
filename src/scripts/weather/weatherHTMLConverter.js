@@ -4,7 +4,7 @@
 export const weatherHTMLConverter = (weatherObj) => {
     const target = document.querySelector('.top-row__current-weather');
     target.innerHTML = `
-    <h1>CURRENT WEATHER</h1>
+    <h4>CURRENT WEATHER</h4>
     Today's local forcast: ${weatherObj[0].description}
     `;
 };
