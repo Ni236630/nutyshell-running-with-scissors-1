@@ -66,7 +66,9 @@ export const taskList = () => {
         return` 
         <div class="task__container">
         <i id="addTask" class="btn fas fa-plus-circle fa-2x"></i>
-         ${tasks.map((task)=>{
+         ${tasks
+          .sort((a,b)=>a.completionDate.localeCompare(b.completionDate))
+          .map((task)=>{
           if(task.userId === activeUserId && task.isComplete === "false"){
             
              return  taskHTMLConverter(task)

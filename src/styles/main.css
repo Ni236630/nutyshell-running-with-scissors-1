@@ -44,6 +44,10 @@ h2 {
   font-size: 24px;
 }
 
+h4 {
+  font-size: 20px;
+}
+
 button {
   padding: 3px 4px;
   z-index: 99999;
@@ -106,10 +110,9 @@ main {
   margin: 0.25em;
 }
 
-.task-list,
 .message-list {
   border-radius: 7px;
-  border: 3px solid cornsilk;
+  /* border: 3px solid cornsilk; */
 }
 
 .event-list::-webkit-scrollbar,
